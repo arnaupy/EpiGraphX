@@ -1,0 +1,1 @@
+from epidemix.network_encoder import *
