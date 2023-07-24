@@ -1,3 +1,4 @@
 Pipfile
-main.ipynb
 .env
+**/__pycache__
+Main.ipynb
