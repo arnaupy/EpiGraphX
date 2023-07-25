@@ -1,23 +1,38 @@
-import warnings
-from sqlalchemy import Column, String, Integer, ForeignKey, Boolean
+from typing import Optional
+# from typing import List
+
+from sqlalchemy import ForeignKey
+from sqlalchemy import update
+from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import mapped_column
+# from sqlalchemy.orm import relationship
+
 from utils.ReadNetwork import read_network 
-from utils.base import Session, engine, Base
+from utils.base import Session
+from utils.base import engine
+from utils.base import Base
 from utils.tools import random_id
+from utils.vector import create_vector_table
       
       
 class Network(Base):
     __tablename__ = "networks"
     
-    id = Column("id", String, nullable = False, primary_key = True)
-    label = Column("label", String, nullable = False)
-    nodes = Column("nodes", Integer)
-    edges = Column("edges", Integer)
-    is_read = Column("is_read", Boolean)
-    file_path = Column("file_path", String, nullable = False)
+    id: Mapped[str] = mapped_column(primary_key=True)
+    label: Mapped[str] 
+    nodes: Mapped[Optional[int]] 
+    edges: Mapped[Optional[int]] 
+    is_read: Mapped[bool]
+    file_path: Mapped[str]
+    # degrees: Mapped[List["Degree"]] = relationship(back_populates="network")
+    # links: Mapped[List["Link"]] = relationship(back_populates="network")
+    # pini: Mapped[List["Pini"]] = relationship(back_populates="network")
+    # pfin: Mapped[List["Pfin"]] = relationship(back_populates="network")
     
     def __init__(self, label, file_path = None):
         # Creates a new session
-        with Session() as session:
+        with Session(expire_on_commit = False) as session:
+            # Registration on a new network
             if not(exists(label)):
                 assert file_path != None, f"(400 BAD REQUEST):'{label}' do not exist, a file path is needed"
                 self.id = random_id()
@@ -27,36 +42,33 @@ class Network(Base):
                 session.add(self)
                 session.commit()
                 print(f"(201 CREATED): Network '{self.id}' registered in the system")
-                
+            # Instanciation of an existing network
             else:
                 if file_path != None:
                     print("WARNING: File path is not needed when calling read_network function in a registered network")
-            # Get existing data
-            network = session.query(Network).filter(Network.label == label).first()
-            columns = network.__table__.columns
-            for column in columns:
-                column_name = column.name
-                setattr(self, column_name, network.__getattribute__(column_name))
-            print(f"(200 OK): Network '{self.id}' instanciated")
+                # Get existing data
+                network = session.query(Network).filter(Network.label == label).first()
+                columns = network.__table__.columns
+                for column in columns:
+                    column_name = column.name
+                    setattr(self, column_name, network.__getattribute__(column_name))
+                print(f"(200 OK): Network '{self.id}' instanciated")
         
         
     def __repr__(self):
         if self.is_read:
-            return f"{self.__class__.__name__}(\nid = {self.id},\nlabel = {self.label},\nnodes = {self.nodes},\nedges = {self.edges}\n)" 
+            return f"{self.__class__.__name__}(label = {self.label}, nodes = {self.nodes}, edges = {self.edges})" 
     
         else:
-            return f"{self.__class__.__name__}(\nid = {self.id},\nlabel = {self.label}\n)"
+            return f"{self.__class__.__name__}(label = {self.label})"
     
     
     
-    def read_network(self, update = False, return_tables = False):
+    def read_network(self,return_tables = False):
            
         # Checks if network is already read
-        if not(update): 
-            assert not(self.is_read), f"(400 BAD REQUEST): Network named '{self.label}' saved in file '{self.file_path}' is already read."
-        else:
-            assert self.is_read, f"(400 BAD REQUEST): Can not update a non-read network."
-            
+        assert not(self.is_read), f"(400 BAD REQUEST): Network named '{self.label}' saved in file '{self.file_path}' is already read."
+        
         
         # Reading process
         with open(self.file_path) as f:
@@ -79,6 +91,7 @@ class Network(Base):
         # Updating degree table
         degree_dict = [
                 {
+                    "id": random_id(),
                     "network_id": self.id,
                     "item_position": node + 1,
                     "item_value": int(self.degree[node])
@@ -90,6 +103,7 @@ class Network(Base):
         # Updating links table
         links_dict = [
                 {
+                    "id": random_id(),
                     "network_id": self.id,
                     "item_position": edge + 1,
                     "item_value": int(self.links[edge])
@@ -101,6 +115,7 @@ class Network(Base):
         # Updating pini table
         pini_dict = [
                 {
+                    "id": random_id(),
                     "network_id": self.id,
                     "item_position": node + 1,
                     "item_value": int(self.pini[node])
@@ -112,6 +127,7 @@ class Network(Base):
         # Updating pfin table
         pfin_dict = [
                 {
+                    "id": random_id(),
                     "network_id": self.id,
                     "item_position": node + 1,
                     "item_value": int(self.pfin[node])
@@ -128,80 +144,47 @@ class Network(Base):
         print(f"(201 CREATED): Network ({self.id}) read")
         if return_tables:
             return degree_dict, links_dict, pini_dict, pfin_dict
-    
-class Degree(Base):
-    __tablename__ = "degree"
-    
-    id = Column("id", Integer, nullable = False, primary_key = True, autoincrement= True)
-    network_id = Column("network_id", String, ForeignKey("networks.id"), nullable = False)
-    item_position = Column("item_position", Integer, nullable = False)
-    item_value = Column("item_value", Integer, nullable = False)
-    
-    def __init__(self, network_id, item_position, item_value):
-        self.network_id = network_id
-        self.item_position = item_position
-        self.item_value = item_value
         
+    def update(self, **kwargs):
+        non_updatable_attributes = ["nodes", "edges", "is_read"]
+        for attribute_name, attribute_value in kwargs.items():
+            if attribute_name in non_updatable_attributes:
+                print(f"(WARNING): attribute '{attribute_name}' can not be updated")
+            else:
+                setattr(self, attribute_name, attribute_value)
+    
+        # Creates a new session
+        with Session(expire_on_commit = False) as session:
+            session.execute(
+                update(self.__class__)
+                .where(self.__class__.id == self.id)
+                .values(**kwargs)
+                )
+            session.commit()
         
-    def __repr__(self):
-        return f"({self.network_id}) {self.__tablename__} : pos({self.item_position}) : value({self.item_value})" 
+Object = create_vector_table(int, class_name="Degree")
+class Degree(Object):
+    network_id: Mapped[str] = mapped_column(ForeignKey("networks.id"))
+    # network: Mapped[Network] = relationship(back_populates="degrees")
+
+Object = create_vector_table(int, class_name="Link")
+class Link(Object):
+    network_id: Mapped[str] = mapped_column(ForeignKey("networks.id"))
+    # network: Mapped[Network] = relationship(back_populates="links")
+
+Object = create_vector_table(int, class_name="Pini")
+class Pini(Object):
+    network_id: Mapped[str] = mapped_column(ForeignKey("networks.id"))
+    # network: Mapped[Network] = relationship(back_populates="pini")
     
 
+Object = create_vector_table(int, class_name="Pfin")
+class Pfin(Object):
+    network_id: Mapped[str] = mapped_column(ForeignKey("networks.id"))
+    # network: Mapped[Network] = relationship(back_populates="pfin")
 
-class Link(Base):
-    __tablename__ = "links"
-    
-    id = Column("id", Integer, nullable = False, primary_key = True, autoincrement= True)
-    network_id = Column("network_id", String, ForeignKey("networks.id"), nullable = False)
-    item_position = Column("item_position", Integer, nullable = False)
-    item_value = Column("item_value", Integer, nullable = False)
-    
-    def __init__(self, network_id, item_position, item_value):
-        self.network_id = network_id
-        self.item_position = item_position
-        self.item_value = item_value
-        
-        
-    def __repr__(self):
-        return f"({self.network_id}) {self.__tablename__} : pos({self.item_position}) : value({self.item_value})" 
-    
+Object.metadata.create_all(engine)
 
-class Pini(Base):
-    __tablename__ = "pini"
-    
-    id = Column("id", Integer, nullable = False, primary_key = True, autoincrement= True)
-    network_id = Column("network_id", String, ForeignKey("networks.id"), nullable = False)
-    item_position = Column("item_position", Integer, nullable = False)
-    item_value = Column("item_value", Integer, nullable = False)
-    
-    def __init__(self, network_id, item_position, item_value):
-        self.network_id = network_id
-        self.item_position = item_position
-        self.item_value = item_value
-        
-        
-    def __repr__(self):
-        return f"({self.network_id}) {self.__tablename__} : pos({self.item_position}) : value({self.item_value})" 
-    
-
-class Pfin(Base):
-    __tablename__ = "pfin"
-    
-    id = Column("id", Integer, nullable = False, primary_key = True, autoincrement= True)
-    network_id = Column("network_id", String, ForeignKey("networks.id"), nullable = False)
-    item_position = Column("item_position", Integer, nullable = False)
-    item_value = Column("item_value", Integer, nullable = False)
-    
-    def __init__(self, network_id, item_position, item_value):
-        self.network_id = network_id
-        self.item_position = item_position
-        self.item_value = item_value
-        
-        
-    def __repr__(self):
-        return f"({self.network_id}) {self.__tablename__} : pos({self.item_position}) : value({self.item_value})" 
-
-Base.metadata.create_all(engine)
 
 def exists(network_label:str) -> bool:
     """(exists)
