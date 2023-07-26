@@ -10,6 +10,7 @@ def create_vector_table(dtype, class_name="Vector"):
     
     class Vector(Base):
         __tablename__ = class_name.lower()
+        __table_args__ = {'extend_existing': True}
         id: Mapped[str] = mapped_column(primary_key=True)
         item_position: Mapped[int]
         item_value: Mapped[dtype]
