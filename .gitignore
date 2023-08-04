@@ -1,4 +1,4 @@
 Pipfile
-.env
 **/__pycache__
 Main.ipynb
+**/.DS_Store
