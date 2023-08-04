@@ -15,7 +15,7 @@ You can find the paper I wrote about the thesis on my LinkedIn profile:
 - Numpy
 
 ## How to start working on the project?
-This project is build upon docker containers to isolate all the dependencies ([see Pipfile](./Pipfile)) and the fortran compiler used for the most computacional demanding functions.
+This project is build upon docker containers to isolate all the dependencies ([see Pipfile.lock](./Pipfile.lock)) and the fortran compiler used for the most computacional demanding functions.
 ```
 docker compose -f docker-compose-dev.yml up -d
 ```
