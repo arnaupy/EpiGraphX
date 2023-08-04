@@ -9,12 +9,12 @@ from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 # from sqlalchemy.orm import relationship
 
-from utils.ReadNetwork import read_network 
-from utils.base import Session
-from utils.base import engine
-from utils.base import Base
-from utils.tools import random_id
-from utils.vector import create_vector_table
+from .f2py.ReadNetwork import read_network 
+from .utils.base import Session
+from .utils.base import engine
+from .utils.base import Base
+from .utils.tools import random_id
+from .utils.vector import create_vector_table
       
       
 class Network(Base):
@@ -94,7 +94,6 @@ class Network(Base):
         
         
         # Reading process
-        print("(NOTE): Reading network...")
         with open(self.file_path) as f:
             Emax = len(f.readlines())
         self.nodes, self.edges, self.links, self.degrees, self.pini, self.pfin = read_network(self.file_path, Emax)

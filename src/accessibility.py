@@ -1,5 +1,5 @@
-from utils.base import Session
-from network_encoder import Network
+from .utils.base import Session
+from .network_encoder import Network
 
 class NetworkList:
     def __init__(self):

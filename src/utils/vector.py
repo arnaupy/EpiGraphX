@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
-from utils.base import Base
+from .base import Base
 
 
 # class Reflected(DeferredReflection):
