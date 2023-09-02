@@ -3,17 +3,14 @@ FROM python:3.11.4
 WORKDIR /app
 
 # Copying the app dependencies
-COPY Pipfile.lock Pipfile.lock
+COPY Pipfile Pipfile
 # Installing the virtual environment package manager
 RUN pip install pipenv
 # Creating and installing the packages and dependencies
-RUN pipenv sync --dev
+RUN pipenv update --dev
 
 # Installing the fortran compiler
 RUN apt-get update
 RUN echo Y | apt-get install gfortran
 
-CMD ["code", "."]
-
-
-
+# CMD ["pipenv", "run", "uvicorn", "app.main:app", "--reload"]

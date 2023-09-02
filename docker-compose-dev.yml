@@ -41,7 +41,7 @@ services:
       ##PGDATA: d:/pg #/var/lib/postgresql/data/pgdata
     ports:
       #port on machine:port on container
-      - 1234:5432
+      - 5432:5432
     volumes:
       #path on my windows machine:path to postgres default folder
       - postgres-data:/var/lib/postgresql/data
