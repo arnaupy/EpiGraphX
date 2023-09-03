@@ -1,17 +1,14 @@
 FROM python:3.11.4
 
+# Setting the directory to allocate the app
 WORKDIR /app
 
-# Copying the app dependencies
-COPY Pipfile Pipfile
-# Installing the virtual environment package manager
-RUN pip install pipenv
-# Creating and installing the packages and dependencies
-RUN pipenv update --dev
+# Copying the app dependencies from requirements file 
+COPY ./requirements.txt .
+
+# Installing the copied dependencies
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Installing the fortran compiler
 RUN apt-get update
 RUN echo Y | apt-get install gfortran
-
-### NEEDS TO BE TESTED
-# CMD ["pipenv", "run", "uvicorn", "app.main:app", "--reload"]

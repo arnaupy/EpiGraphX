@@ -4,26 +4,26 @@ services:
   # Defining app image
   app:
     build:
-      # Since the default file name should be Dockerfile, this line of code is essential
       context: .
       dockerfile: Dockerfile.dev
-    # Setting the volum to share app code with the host machine
-    volumes:
-      - .:/app
-    # Overrides default command so things don't shut down after the process ends.
-    command: sleep infinity
-    # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
-    ## Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
-    ## (Adding the "ports" property to this file will not forward from a Codespace.)
-    # Setting environtment varibles to connect the app with the database
+    container_name: chanel-app
+    # Command to run the api
+    command: uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
+    # Environment variables
     environment:
+      # By default in postgres image the user ir "postgres"
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=my_password
       - POSTGRES_PORT=5432
+      # By default in postgres image the initial db is named as the user "postgres"
       - POSTGRES_DB_NAME=postgres
-      - POSTGRES_HOSTNAME=localhost
-    # Don't actually know why thats in here
+      # db solves the problem of connectivity after trying with "postgres" and "localhost"
+      - POSTGRES_HOST=db
+    ports:
+      #port on machine:port on container
+      - 8080:80
+    volumes:
+      - .:/app
     depends_on:
       - db
 
@@ -34,20 +34,18 @@ services:
 
     # Environment variables
     environment:
-      POSTGRES_USER: postgres
+      # Password is the only env variable required
       POSTGRES_PASSWORD: my_password
-      ##POSTGRES_HOST_AUTH_METHOD: trust
-      ##POSTGRES_HOST: postgres
-      ##PGDATA: d:/pg #/var/lib/postgresql/data/pgdata
+      # POSTGRES_USER: 
+      # POSTGRES_DB: default(POSTGRES_USER)
     ports:
       #port on machine:port on container
       - 5432:5432
+    container_name: chanel-postgres-db
     volumes:
-      #path on my windows machine:path to postgres default folder
+      #path on my mac machine:path to postgres default folder
       - postgres-data:/var/lib/postgresql/data
     privileged: true
 
 volumes:
   postgres-data:
-
-
