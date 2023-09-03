@@ -46,6 +46,7 @@ class Link(Base):
     
     network: Mapped["Network"] = relationship(back_populates="link")
     
+    
 class Pini(Base):
     __tablename__ = "pini"
     
@@ -55,6 +56,7 @@ class Pini(Base):
     item_value: Mapped[int]
     
     network: Mapped["Network"] = relationship(back_populates="pini")
+    
     
 class Pfin(Base):
     __tablename__ = "pfin"
@@ -66,15 +68,5 @@ class Pfin(Base):
     
     network: Mapped["Network"] = relationship(back_populates="pfin")
              
-    # def __repr__(self):
-    #     class_name = self.__class__.__name__
-    #     if exists(self.label):
-    #         if self.is_read:
-    #             return f"{class_name}(label = {self.label}, nodes = {self.nodes}, edges = {self.edges})" 
-        
-    #         else:
-    #             return f"{class_name}(label = {self.label})"
-    #     else:
-    #         return f"{class_name}(file_path = {self.file_path})"
 
 

@@ -110,31 +110,35 @@ def read_network(db: Session, network: schemas.Network):
     return pull_network(db = db, network_id = network.id)
 
 
-def pull_degree(db: Session, degree_id: str) -> models.Network:
-    return db.query(models.Degree).filter(models.Degree.id == degree_id).first()
+# %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&
+#      FUTURE FUNCTIONALITIES
+# %&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&%&
+
+# def pull_degree(db: Session, degree_id: str) -> models.Network:
+#     return db.query(models.Degree).filter(models.Degree.id == degree_id).first()
 
 
-def pull_degree_by_attributes(db: Session, network_id: str, item_position: int, item_value: int):
-    return db.query(models.Degree).filter((models.Degree.network_id == network_id) & 
-                                          (models.Degree.item_position == item_position) &
-                                          (models.Degree.item_value == item_value)
-                                          ).first()
+# def pull_degree_by_attributes(db: Session, network_id: str, item_position: int, item_value: int):
+#     return db.query(models.Degree).filter((models.Degree.network_id == network_id) & 
+#                                           (models.Degree.item_position == item_position) &
+#                                           (models.Degree.item_value == item_value)
+#                                           ).first()
 
-def add_degree(db: Session, degree: schemas.DegreeCreate):
-    db_degree = models.Degree(id = random_id(), 
-                              network_id = degree.network_id, 
-                              item_position = degree.item_position, 
-                              item_value = degree.item_value
-                              )
-    db.add(db_degree)
-    db.commit()
-    db.refresh(db_degree)
-    return db_degree
+# def add_degree(db: Session, degree: schemas.DegreeCreate):
+#     db_degree = models.Degree(id = random_id(), 
+#                               network_id = degree.network_id, 
+#                               item_position = degree.item_position, 
+#                               item_value = degree.item_value
+#                               )
+#     db.add(db_degree)
+#     db.commit()
+#     db.refresh(db_degree)
+#     return db_degree
     
         
-def remove_degree(db: Session, degree: schemas.Degree):
-    db.query(models.Degree).filter(models.Degree.id == degree.id).delete()
-    db.commit()
-    return True
+# def remove_degree(db: Session, degree: schemas.Degree):
+#     db.query(models.Degree).filter(models.Degree.id == degree.id).delete()
+#     db.commit()
+#     return True
     
 

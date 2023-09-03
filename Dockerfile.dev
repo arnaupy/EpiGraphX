@@ -13,4 +13,5 @@ RUN pipenv update --dev
 RUN apt-get update
 RUN echo Y | apt-get install gfortran
 
+### NEEDS TO BE TESTED
 # CMD ["pipenv", "run", "uvicorn", "app.main:app", "--reload"]
