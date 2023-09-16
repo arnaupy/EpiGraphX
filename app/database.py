@@ -1,6 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker
 import os
 
 database_key = os.environ["POSTGRES_PASSWORD"]
@@ -10,6 +9,6 @@ user_name = os.environ["POSTGRES_USER"]
 port_number = os.environ["POSTGRES_PORT"]
 
 engine = create_engine(f"postgresql://{user_name}:{database_key}@{host_name}:{port_number}/{database_name}", echo = False)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit = False, autoflush = False, bind = engine)
 
 Base = declarative_base()

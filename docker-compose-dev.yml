@@ -23,7 +23,9 @@ services:
       #port on machine:port on container
       - 8080:80
     volumes:
-      - .:/app
+      - ./app:/app
+      - ./networks:/networks
+      - ./fortran:/fortran
     depends_on:
       - db
 
