@@ -24,8 +24,8 @@ services:
       - 8080:80
     volumes:
       - ./app:/app
-      - ./networks:/networks
-      - ./fortran:/fortran
+      - ./docs/networks:/networks
+      - ./docs/fortran:/fortran
     depends_on:
       - db
 
