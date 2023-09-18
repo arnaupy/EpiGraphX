@@ -29,35 +29,83 @@ To interact with the app, please keep in mind that the app is running on contain
 At the moment, the app is only capable of creating, reading, updating, and deleting a network. ([crud.py](./app/crud.py) | [view.py](./app/view.py) | [main.py](./app/main.py))
 
 ## Quick start
-First, note that the app stores network files in the `network` directory inside the container, sourced from the local machine, located in [docs](./docs/networks/).
+First, note that the app stores network files in the `network` directory inside the container, sourced from the local machine, located in [docs](./docs/networks/). Every functionality presented here can be tested in various ways, but as mentioned earlier, FastAPI docs is one of the best options for doing so.
 
 ---
-1. Create network
-
-![Create](./docs/images/QS_CreateNetwork.png)
+### Create network
+Use the `Create Network` option and send a JSON file, such as:
+```
+{
+    "label":"UniformNetwork",
+    "file_path":"networks/UniformNetwork.txt"
+}
+```
+Make sure you receive the following response with a different **id**:
+```
+{
+    "label": "UniformNetwork",
+    "file_path": "networks/UniformNetwork.txt",
+    "id": "sl98g96npuke0xy2wg3tbqcs0vb8rh",
+    "nodes": null,
+    "edges": null,
+    "is_read": false,
+    "degree": [],
+    "link": [],
+    "pini": [],
+    "pfin": []
+}
+```
 
 ---
-2. Read network
-
-![Read](./docs/images/QS_ReadNetwork.png)
-
----
-3. Get network
-
-![Get](./docs/images/QS_GetNetwork.png)
-![Response](./docs/images/QS_GetResponse.png)
+### Read network
+Once the network is registered, you can read it by adding the registered **network id** as a parameter to the `Read Network` function. The response will be:
+```
+{
+  "scanned": true
+}
+```
 
 ---
-### Delete network
-Finally you can try to delete the network following the same indications as in `2. Read Network` but using `delete`.
+### Get network
+Now, attempt to retrieve the network table information using the `Get Network` operation. If you are using the **FastAPI docs**, please avoid performing this operation with the `/data` path, or you'll need to refresh the page :scream: (using this option retrieves the four network vectors). If you successfully execute this request, you will receive:
+```
+{
+    "label": "UniformNetwork",
+    "file_path": "networks/UniformNetwork.txt",
+    "id": "sl98g96npuke0xy2wg3tbqcs0vb8rh",
+    "nodes": 10000,
+    "edges": 100000,
+    "is_read": true
+}
+```
 
 ---
 ### Update network
-If you entered a wrong **label** or **file_path** make then use a `put` statement.
+If you entered an incorrect `file_path` or wish to modify the `label`, use the `Update Network` functionality. Fill the following JSON file along with the network id:
+```
+{
+    "label": "new_label",
+    "file_path": "new_file_path.txt"
+}
+```
+If you left the default value for **label** and **file_path** (`None`), this features won't be updated. Then, if everything went as expected:
+```
+{
+    "updated": true
+}
+```
+Check that the network is correctly updated by retrieving the network once again.
 
-![Update](./docs/images/QS_UpdateNetwork.png)
+---
+### Delete network
+Finally :sweat:, you can try to delete the network using the `Delete Network` function by specifying its id. The response will be:
+```
+{
+    "deleted": true
+}
+```
 
-## Future implementations
+## Next steps and improvements
 - Transform table arrays into numpy arrays
 - Network properties
     - `mean degree`, `mean degree square`, `shortest path`, ...   
@@ -66,14 +114,18 @@ If you entered a wrong **label** or **file_path** make then use a `put` statemen
 - Optimize reading process
 - Network storage
     - access **.txt** network files using `Git lfs`?
+    - using NoSQL databases?
 
 ## Contributing
-Before starting to develop new features, you must understand how networks are handled in this project. ([How networks are read and stored in the database?](./docs/NETWORKS.md))
+Before starting to develop new features, you must understand how networks are handled in this project. ([How networks are read and stored in the database?](./docs/NETWORKS.md)). Make sure you have `Docker` installed ([How to install Docker?](https://docs.docker.com/engine/install/)). Read `How to run the app?` and make the short `Quick start` if you are new working with **FastAPI**. 
 
-Then, simply clone this repository to your local machine and begin working on [Future implementations](#Future implementations) or assist with app documentation in [README](./README.md) and [NETWORKS](./docs/NETWORKS.md).
+Then, simply clone this repository to your local machine and begin working on `Next steps and improvements` or assist with app documentation in [README](./README.md) and [NETWORKS](./docs/NETWORKS.md).
 ```
 git clone https://github.com/arnaupy/EpiGraphX.git
 ```
+Finally, don't forget to have fun contributing in such an ambicious project :grin:.
+
+Feel free to make any pull request or contact me with any questions or new ideas at -> 01arnauperez@gmail.com
 
 ## Goal
 Build an app to simulate and study disease spreading processes in networks, with the aim of investigating possible strategies to combat or limit the spread of diseases.
