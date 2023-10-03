@@ -1,5 +1,6 @@
 import random as rd
 from fastapi.encoders import jsonable_encoder
+from datetime import datetime, timedelta
 
 def random_id(lenght: int = 30) -> str:
     """Method to get a random id
@@ -18,21 +19,10 @@ def random_id(lenght: int = 30) -> str:
         id_str += rd.choice(caracters)
     return id_str
 
+def now(dateformat: str) -> str:
+    """Return the actual string datetime according to the input format"""
+    
+    return datetime.now().strftime(dateformat)
 
-def get_parent(child, parent_class):
-    """Method to build a 'parent-pydantic-BaseModel' class from its child. 
-       That way getting rid of extra child attributes.
 
-    Args:
-        child (BaseModel Instance): child instance
-        parent_class (BaseModel Class): parent class
 
-    Returns:
-        BaseModel Instance: Parent instance build from shared child attributes 
-    """
-    parent_attributes = {}
-    # Looks for shared attributes between parent and child
-    for attribute in jsonable_encoder(child):
-        if attribute in parent_class.model_json_schema()["properties"]:
-            parent_attributes.update({attribute: jsonable_encoder(child)[attribute]})
-    return parent_class(**parent_attributes)

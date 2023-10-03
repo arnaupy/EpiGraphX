@@ -1,7 +1,14 @@
 FROM python:3.11.4
 
-# Setting the directory to allocate the app
-# WORKDIR /app
+# Set default filepath for storing files
+ARG DEFAULT_FILE_DIRECTORY
+ENV DEFAULT_FILE_DIRECTORY=files
+RUN mkdir $DEFAULT_FILE_DIRECTORY
+
+# Set default filepath for storing images
+ARG DEFAULT_NETWORK_DIRECTORY
+ENV DEFAULT_NETWORK_DIRECTORY=networks
+RUN mkdir $DEFAULT_FILE_DIRECTORY/$DEFAULT_NETWORK_DIRECTORY
 
 # Copying the app dependencies from requirements file 
 COPY ./requirements.txt .
