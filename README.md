@@ -14,7 +14,7 @@ You can find the paper I wrote about the thesis on my [LinkedIn](https://www.lin
 
 This project is built upon `Docker` containers to isolate all dependencies and access `Fortran` subroutines for the most computationally demanding functions thanks to [f2py](https://numpy.org/doc/stable/f2py/). You can review the [Fortran](./docs/fortran) functions I employed in my thesis.
 
-The following command builds the app and the `PostgreSQL` database images and containers. All container configurations are specified in [DockerFile.dev](./Dockerfile.dev) and [docker-compose-dev.yml](./docker-compose-dev.yml).
+The following command builds the `app` and the `PostgreSQL` database images and containers. All container configurations are specified in [DockerFile.dev](./Dockerfile.dev) and [docker-compose-dev.yml](./docker-compose-dev.yml).
 ```
 docker compose -f docker-compose-dev.yml up --build
 ```
@@ -26,39 +26,53 @@ To interact with the app, please keep in mind that the app is running on contain
 
 ## Features
 ### CRUD
-At the moment, the app is only capable of creating, reading, updating, and deleting a network. ([crud.py](./app/crud.py) | [view.py](./app/view.py) | [main.py](./app/main.py))
+At the moment, the app is only capable of creating, reading, updating, and deleting a network. ([crud.py](./app/model/crud.py) | [summary.py](./app/model/summary.py) | [file_processors.py](./app/model/file_processors.py) | [networks.py](./app/routers/networks.py))
 
 ## Quick start
-First, note that the app stores network files in the `network` directory inside the container, sourced from the local machine, located in [docs](./docs/networks/). Every functionality presented here can be tested in various ways, but as mentioned earlier, FastAPI docs is one of the best options for doing so.
+To test the app, you can follow the next steps to `create` a network `scan` it and `get` its data encoded as explained in [DATABASE.md](docs/DATABASE.md).
 
 ---
 ### Create network
 Use the `Create Network` option and send a JSON file, such as:
 ```
 {
-    "label":"UniformNetwork",
-    "file_path":"networks/UniformNetwork.txt"
+  "label": "EmailEnron",
+  "is_private": true,
+  "origin": "email-enron-large.txt"
 }
 ```
 Make sure you receive the following response with a different **id**:
 ```
 {
-    "label": "UniformNetwork",
-    "file_path": "networks/UniformNetwork.txt",
-    "id": "sl98g96npuke0xy2wg3tbqcs0vb8rh",
-    "nodes": null,
-    "edges": null,
-    "is_read": false,
-    "degree": [],
-    "link": [],
-    "pini": [],
-    "pfin": []
+  "label": "EmailEnron",
+  "is_private": true,
+  "origin": "email-enron-large.txt",
+  "id": "jsl3b6wsqfmmq9v41bbfun88mykhuh",
+  "nodes": null,
+  "edges": null,
+  "is_scanned": false,
+  "last_update": "2023-10-03T10:47:57",
+  "last_scan": null,
+  "time_to_scan": null,
+  "degree": null,
+  "link": null,
+  "pini": null,
+  "pfin": null
 }
 ```
 
 ---
 ### Read network
-Once the network is registered, you can read it by adding the registered **network id** as a parameter to the `Read Network` function. The response will be:
+First, ensure that the network file named in 'origin' when creating the network is stored in the system. To do so, you have to upload the network file `email-enron-large.txt` you find in [networks](docs/networks) directory using the `Upload Network File` function. The response body:
+```
+{
+  "uploaded_file": {
+    "filename": "email-enron-large.txt",
+    "size": 1804419
+  }
+}
+```
+Once the network is `registered` in the system and the `network file` is abailable, you can read it by adding the registered **network id** as a parameter to the `Read Network` function. The response will be:
 ```
 {
   "scanned": true
@@ -67,38 +81,46 @@ Once the network is registered, you can read it by adding the registered **netwo
 
 ---
 ### Get network
-Now, attempt to retrieve the network table information using the `Get Network` operation. If you are using the **FastAPI docs**, please avoid performing this operation with the `/data` path, or you'll need to refresh the page :scream: (using this option retrieves the four network vectors). If you successfully execute this request, you will receive:
+Now, attempt to retrieve the network table information using the `Get Network` operation. To get all the data from the network use this operation with the `/data` prefix (this option retrieves the four network vectors too). If you successfully execute this request, you will receive:
 ```
 {
-    "label": "UniformNetwork",
-    "file_path": "networks/UniformNetwork.txt",
-    "id": "sl98g96npuke0xy2wg3tbqcs0vb8rh",
-    "nodes": 10000,
-    "edges": 100000,
-    "is_read": true
+  "label": "EmailEnron",
+  "is_private": true,
+  "origin": "email-enron-large.txt",
+  "id": "jsl3b6wsqfmmq9v41bbfun88mykhuh",
+  "nodes": 33696,
+  "edges": 180811,
+  "is_scanned": true,
+  "last_update": "2023-10-03T10:58:08",
+  "last_scan": "2023-10-03T10:58:08",
+  "time_to_scan": "1.246"
 }
 ```
 
 ---
 ### Update network
-If you entered an incorrect `file_path` or wish to modify the `label`, use the `Update Network` functionality. Fill the following JSON file along with the network id:
+If you entered an incorrect `origin` or wish to modify the `label`, use the `Update Network` functionality. Fill the following JSON file along with the network id:
 ```
 {
-    "label": "new_label",
-    "file_path": "new_file_path.txt"
+  "label": "othername",
+  "is_private": true,
+  "origin": "otherfile.txt"
 }
 ```
-If you left the default value for **label** and **file_path** (`None`), this features won't be updated. Then, if everything went as expected:
+If you don't add a label, it won't be modified, but if you want to update the origin, you must specify if is_private is True or False too. Then, if everything went as expected:
 ```
 {
-    "updated": true
+  "updates": {
+    "label": "EmailEnron -> othername",
+    "origin": "email-enron-large.txt -> otherfile.txt"
+  }
 }
 ```
-Check that the network is correctly updated by retrieving the network once again.
+Check that the network is correctly updated by retrieving the network once again. 
 
 ---
 ### Delete network
-Finally :sweat:, you can try to delete the network using the `Delete Network` function by specifying its id. The response will be:
+Finally, you can try to delete the network using the `Delete Network` function by specifying its id. The response will be:
 ```
 {
     "deleted": true
@@ -106,7 +128,6 @@ Finally :sweat:, you can try to delete the network using the `Delete Network` fu
 ```
 
 ## Next steps and improvements
-- Transform table arrays into numpy arrays
 - Network properties
     - `mean degree`, `mean degree square`, `shortest path`, ...   
 - Spreading models
@@ -117,9 +138,9 @@ Finally :sweat:, you can try to delete the network using the `Delete Network` fu
     - using NoSQL databases?
 
 ## Contributing
-Before starting to develop new features, you must understand how networks are handled in this project. ([How networks are read and stored in the database?](./docs/NETWORKS.md)). Make sure you have `Docker` installed ([How to install Docker?](https://docs.docker.com/engine/install/)). Read `How to run the app?` and make the short `Quick start` if you are new working with **FastAPI**. 
+Before starting to develop new features, you must understand how networks are handled in this project, see [DATABASE](./docs/DATABASE.md), and how fortran modules are handled, see [FORTRAN_MODULES](./docs/FORTRAN_MODULES.md). Make sure you have `Docker` installed ([How to install Docker?](https://docs.docker.com/engine/install/)). Read `How to run the app?` and make the short `Quick start` if you are new working with **FastAPI**. 
 
-Then, simply clone this repository to your local machine and begin working on `Next steps and improvements` or assist with app documentation in [README](./README.md) and [NETWORKS](./docs/NETWORKS.md).
+Then, simply clone this repository to your local machine and begin working on `Next steps and improvements` or assist with app documentation in [docs](docs) or create new in modules docstrings.
 ```
 git clone https://github.com/arnaupy/EpiGraphX.git
 ```
