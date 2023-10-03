@@ -18,19 +18,18 @@ services:
       # By default in postgres image the initial db is named as the user "postgres"
       - POSTGRES_DB_NAME=postgres
       # db solves the problem of connectivity after trying with "postgres" and "localhost"
-      - POSTGRES_HOST=db
+      - POSTGRES_HOST=postgres-db
     ports:
       #port on machine:port on container
       - 8080:80
     volumes:
       - ./app:/app
-      - ./docs/networks:/networks
       - ./docs/fortran:/fortran
     depends_on:
-      - db
+      - postgres-db
 
   # Defining the database image
-  db:
+  postgres-db:
     image: postgres
     restart: always
 
@@ -51,3 +50,5 @@ services:
 
 volumes:
   postgres-data:
+
+
