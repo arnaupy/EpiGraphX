@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/dev-guide/Architecture/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Architecture/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/dev-guide/Contributing/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Contributing/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/dev-guide/Databases/PostgreSQL/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Databases/PostgreSQL/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/dev-guide/Features/CRUD/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Features/CRUD/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/dev-guide/FortranModules/FortranModules/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/FortranModules/FortranModules/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/dev-guide/QuickStart/QuickStart/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/QuickStart/QuickStart/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/user-guide/GettingStarted/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/user-guide/GettingStarted/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://arnaupy.github.io/Epidemic-Spreading-on-Networks/user-guide/Installation/</loc>
+         <loc>https://arnaupy.github.io/EpiGraphX/user-guide/Installation/</loc>
          <lastmod>2023-10-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
