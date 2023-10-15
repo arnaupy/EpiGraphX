@@ -25,7 +25,6 @@ services:
       - 8080:80
     volumes:
       - ./app:/app
-      - ./docs/fortran:/fortran
     depends_on:
       - postgres-db
 
