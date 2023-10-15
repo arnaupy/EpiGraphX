@@ -1,0 +1,11 @@
+fastapi
+python-multipart
+uvicorn
+SQLAlchemy
+psycopg2
+pydantic
+numpy
+validators
+pyyaml
+typer
+rich

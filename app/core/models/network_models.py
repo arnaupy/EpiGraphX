@@ -6,7 +6,7 @@ Database tables to python class interpreter:
     DESCRIPTION -> The main task of this file is to define database tables as python classes. To do so, it is used the
                    SQLAlchemy ORM module to build theses classes.
 
-    CLASSES: TODO
+    CLASSES TODO
     |       
     +
 """
@@ -17,12 +17,10 @@ from datetime import datetime, timedelta
 from typing import Optional
 import numpy as np
 
-from .. import tools
+from ...config import config
+from ..utils import database_utils
 
 Base = declarative_base()
-
-DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-TIMEDELTA_FORMAT = "%H:%M:%S"
 
 class DatabaseArrayMissmatchError(Exception):
     """Raises when any array coming from a database missmatch any specified attribute"""
@@ -51,23 +49,23 @@ class Network(Base):
     def get_last_update(self) -> datetime:
         """Converts database last_update `str` into a `datetime` object"""
         
-        return datetime.strptime(self.last_update, DATETIME_FORMAT)
+        return datetime.strptime(self.last_update, config.DATETIME_FORMAT)
 
     @hybrid_property
     def get_last_scan(self) -> datetime:
         """Converts database last_update `str` into a `datetime` object"""
         
-        return datetime.strptime(self.last_scan, DATETIME_FORMAT)
+        return datetime.strptime(self.last_scan, config.DATETIME_FORMAT)
     
     def update_last_changes(self):
         """Updates the `last_update` with the actual time"""
         
-        self.last_update = tools.now(DATETIME_FORMAT)
+        self.last_update = database_utils.now()
         
     def update_last_scan(self):
         """Updates the `last_scan` with the actual time"""
         
-        self.last_scan = tools.now(DATETIME_FORMAT)
+        self.last_scan = database_utils.now()
     
 
 class OneDimensionalDatabaseArray:

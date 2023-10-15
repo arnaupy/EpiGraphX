@@ -2,7 +2,9 @@ import random as rd
 from fastapi.encoders import jsonable_encoder
 from datetime import datetime, timedelta
 
-def random_id(lenght: int = 30) -> str:
+from ...config import config
+
+def random_id(lenght: int = config.DATABASE_ID_LENGHT) -> str:
     """Method to get a random id
 
     Args:
@@ -19,10 +21,12 @@ def random_id(lenght: int = 30) -> str:
         id_str += rd.choice(caracters)
     return id_str
 
-def now(dateformat: str) -> str:
+def now(dateformat: str = config.DATETIME_FORMAT) -> str:
     """Return the actual string datetime according to the input format"""
     
     return datetime.now().strftime(dateformat)
+
+
 
 
 

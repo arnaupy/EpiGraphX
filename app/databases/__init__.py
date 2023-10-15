@@ -8,7 +8,6 @@ Connection Manager to the database
         manages different tasks depending on the type of data it needs to store. This is influenced by factors 
         such as data accessibility, scalability, mutability and storage capacity.
 
-        * For more information about how are databases are structured see "DATABASE documentation"
 
     MODULE CONTENTS:
     |   - postgresql.py

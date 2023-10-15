@@ -1,21 +1,14 @@
+# Python version
 FROM python:3.11.4
 
-# Set default filepath for storing files
-ARG DEFAULT_FILE_DIRECTORY
-ENV DEFAULT_FILE_DIRECTORY=files
-RUN mkdir $DEFAULT_FILE_DIRECTORY
+# Install app requirements
+COPY requirements/app.txt .
+RUN pip install -r app.txt
 
-# Set default filepath for storing images
-ARG DEFAULT_NETWORK_DIRECTORY
-ENV DEFAULT_NETWORK_DIRECTORY=networks
-RUN mkdir $DEFAULT_FILE_DIRECTORY/$DEFAULT_NETWORK_DIRECTORY
-
-# Copying the app dependencies from requirements file 
-COPY ./requirements.txt .
-
-# Installing the copied dependencies
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
-# Installing the fortran compiler
+# Install `fortran`
 RUN apt-get update
-RUN echo Y | apt-get install gfortran
+RUN	echo Y | apt-get install gfortran
+
+# Build file system
+COPY ./app ./app
+RUN python app/config/file_config.py

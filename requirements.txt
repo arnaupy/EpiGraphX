@@ -1,9 +1,3 @@
-fastapi
-python-multipart
-uvicorn
-SQLAlchemy
-psycopg2
-pydantic
-numpy
-validators
-glob2
+-r requirements/app.txt
+-r requirements/tests.txt
+-r requirements/docs.txt

@@ -9,6 +9,7 @@ services:
     container_name: chanel-app
     # Command to run the api
     command: uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
+    
     # Environment variables
     environment:
       # By default in postgres image the user ir "postgres"
