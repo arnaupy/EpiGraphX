@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/Features/CRUD/">
+        <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/InteractBackend/InteractBackend/">
       
       
+        <link rel="prev" href="../../QuickStart/QuickStart/">
+      
+      
+        <link rel="next" href="../../Code/WORKING/">
       
       
       <link rel="icon" href="../../../images/black_logo.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>CRUD - EpiGraphX</title>
+        <title>Interact with the Backend - EpiGraphX</title>
       
     
     
@@ -72,6 +76,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#how-to-interact-with-the-backend" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CRUD
+              Interact with the Backend
             
           </span>
         </div>
@@ -317,18 +326,20 @@
       
   
   
+    
+  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -342,7 +353,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Developer Guide
@@ -373,9 +384,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../InteractBackend/InteractBackend/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Interact with the Backend
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -384,6 +415,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-containers" class="md-nav__link">
+    Build containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-server" class="md-nav__link">
+    Run the server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop-remove-containers" class="md-nav__link">
+    Stop &amp; Remove containers
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -556,6 +628,37 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#build-containers" class="md-nav__link">
+    Build containers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-server" class="md-nav__link">
+    Run the server
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop-remove-containers" class="md-nav__link">
+    Stop &amp; Remove containers
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -570,9 +673,34 @@
                   
 
 
-  <h1>CRUD</h1>
-
-
+<h1 id="how-to-interact-with-the-backend">How to interact with the backend?</h1>
+<p>This project is using <code>Docker</code> containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the <a href="../../../Makefile">Makefile</a>. That file is repossible to run commands using <code>make</code> followed by the comand specified in that file.</p>
+<p>To see information about make comand, run:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make help
+</span></code></pre></div></p>
+<h2 id="build-containers">Build containers</h2>
+<p>The following comand creates the corresponding images and build container specified in <code>Docker files</code>.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make build
+</span></code></pre></div></p>
+<ul>
+<li>This comand will also run the server at port <code>8080</code>which you can access with <code>FastAPI docs</code> automatically at http://localhost:8080/docs</li>
+</ul>
+<p><img alt="App" src="../FastAPI-Docs.png" /> </p>
+<h2 id="run-the-server">Run the server</h2>
+<p>After building containers, you can restart the server:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a># With logs
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>make devrun
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a># In detached mode
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>make run
+</span></code></pre></div></p>
+<h2 id="stop-remove-containers">Stop &amp; Remove containers</h2>
+<p>If you runned the server in <code>detached mode</code>, you can use the following comand to stop the processes.
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>make stop
+</span></code></pre></div>
+Moreover, if you want to remove containers, images and volumes:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make down
+</span></code></pre></div></p>
 
 
 

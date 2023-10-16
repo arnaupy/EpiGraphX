@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/Databases/PostgreSQL/">
       
       
-        <link rel="prev" href="../../QuickStart/QuickStart/">
+        <link rel="prev" href="../../Code/WORKING/">
       
       
         <link rel="next" href="../../FortranModules/FortranModules/">
@@ -295,6 +295,26 @@
 
               
             
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../user-guide/GettingStarted/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -364,39 +384,41 @@
                 
   
   
-    
   
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
+    <li class="md-nav__item">
+      <a href="../../InteractBackend/InteractBackend/" class="md-nav__link">
         
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
-            
   
   <span class="md-ellipsis">
-    App
+    Interact with the Backend
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Code/WORKING/" class="md-nav__link">
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_2">
-            <span class="md-nav__icon md-icon"></span>
-            App
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+  
+  <span class="md-ellipsis">
+    Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -415,10 +437,10 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
-          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -429,8 +451,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_2_1">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             Databases
           </label>
@@ -539,14 +561,6 @@
 
               
             
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
               
                 
   
@@ -600,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Contributing/" class="md-nav__link">
+      <a href="../../../Contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -695,7 +709,7 @@
 <p>Due to the large data size coming from networks, the most apropiate database has to be be divisible in smaller part so bigger size data is not afected when managing smaller ones. For that reason the ideal database type is a relational database <code>SQL</code>. </p>
 <p>There are lots of relational databases. For the moment, the choosen one is <code>PostreSQL</code>. </p>
 <h2 id="where-to-get-networks-from">Where to get networks from?</h2>
-<p>There are different ways to get data from, but the essential part is that it must be read from somekind of rows and columns file. Why? Networks are described as a graph $G$, composed of a set of nodes, $N$, and edges, $E$, connecting them. In this kind of file, every column correspon to a node and the resulting rows are mapped into edges. From now, where are only talking about graphs that matches the following properties: 
+<p>There are different ways to get data from, but the essential part is that it must be read from somekind of rows and columns file. Why? Networks are described as a graph <span class="arithmatex">\(G\)</span>, composed of a set of nodes, <span class="arithmatex">\(N\)</span>, and edges, <span class="arithmatex">\(E\)</span>, connecting them. In this kind of file, every column correspon to a node and the resulting rows are mapped into edges. From now, where are only talking about graphs that matches the following properties: 
 - Nodes are not connected to themselves | <code>Simple Graph</code>
 - Edges don't have a privileged direction | <code>Undirected Graph</code>
 - Edges don't have weights | <code>Non-Weighted Graph</code>
@@ -707,29 +721,28 @@
 <tr><td>
 <center>
 
-| $1$ | $4$ |
-|:-:|:-:|
-| $4$ | $2$ |
-| $2$ | $3$ |
-| $3$ | $4$ |
+|  $1$  |  $4$  |
+| :---: | :---: |
+|  $4$  |  $2$  |
+|  $2$  |  $3$  |
+|  $3$  |  $4$  |
 </center>
 
 </td><td>
 <center>
 
-|$\langle 1,4\rangle$|
-|:-:|
-|$\langle 4,2\rangle$| 
-|$\langle 2,3\rangle$| 
-|$\langle 3,4\rangle$| 
+| $\langle 1,4\rangle$ |
+| :------------------: |
+| $\langle 4,2\rangle$ |
+| $\langle 2,3\rangle$ |
+| $\langle 3,4\rangle$ |
 </center>
 </td></tr> </table>
 <p></center></p>
-<p>In the last example we can define the network as a graph $G = (V,E)$, where $E = (\langle 1,4\rangle, \langle 4,2\rangle, \langle 2,3\rangle, \langle 3,1\rangle)$ and $N = (1,2,3,4)$. Since this graph is undirected, the edges set is build of elements represented as $\langle , \rangle$. Nodes can be interchanged and the meaning would be the same.</p>
+<p>In the last example we can define the network as a graph <span class="arithmatex">\(G = (V,E)\)</span>, where <span class="arithmatex">\(E = (\langle 1,4\rangle, \langle 4,2\rangle, \langle 2,3\rangle, \langle 3,1\rangle)\)</span> and <span class="arithmatex">\(N = (1,2,3,4)\)</span>. Since this graph is undirected, the edges set is build of elements represented as <span class="arithmatex">\(\langle , \rangle\)</span>. Nodes can be interchanged and the meaning would be the same.</p>
 <p>Finally, from now, this kind of data can be read by <code>txt</code> files. </p>
 <h2 id="where-to-find-network-files-and-how-to-store-them">Where to find network files and how to store them?</h2>
 <p>This txt files can be imported from two different soureces. The <code>client</code> can update this files into the internal server storage or request it from <code>network data repositories</code>. Then to keep track of client updated files, the text file name should be stored so that the client knows where the data was taken from. Then, id the client requested the data from a repository, the corresponfing url will be saved.</p>
-<p><center></p>
 <table>
 <thead>
 <tr>
@@ -747,12 +760,7 @@
 <tr>
 <td style="text-align: center;"><code>Requested</code> from network data repository</td>
 <td style="text-align: center;">url</td>
-<td style="text-align: center;">https://www.network-data-repository/email-enron-large.txt</td>
-</tr>
-<tr>
-<td style="text-align: center;"></center></td>
-<td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;">https://www.network-data-repository/network.txt</td>
 </tr>
 </tbody>
 </table>
@@ -770,23 +778,23 @@
 <tbody>
 <tr>
 <td style="text-align: center;">Degree</td>
-<td style="text-align: center;">$n$</td>
-<td style="text-align: center;">$D(N_1), ... , D(N_n)$</td>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(D(N_1), ... , D(N_n)\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;">Link</td>
-<td style="text-align: center;">$2e$</td>
-<td style="text-align: center;">$E_1(N_1), ... , E_j(N_1), ... , E_1(N_n), ... , E_1(N_n)$</td>
+<td style="text-align: center;"><span class="arithmatex">\(2e\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(E_1(N_1), ... , E_j(N_1), ... , E_1(N_n), ... , E_1(N_n)\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;">Pini</td>
-<td style="text-align: center;">$n$</td>
-<td style="text-align: center;">$1, pos(E_j(N_1)) + 1, ... , pos(E_1(N_n))$</td>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1, pos(E_j(N_1)) + 1, ... , pos(E_1(N_n))\)</span></td>
 </tr>
 <tr>
 <td style="text-align: center;">Pfin</td>
-<td style="text-align: center;">$n$</td>
-<td style="text-align: center;">$pos(E_j(N_1)), ... , 2·e$</td>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(pos(E_j(N_1)), ... , 2·e\)</span></td>
 </tr>
 </tbody>
 </table>
@@ -799,24 +807,24 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">$n$</td>
-<td style="text-align: center;">$|N|$</td>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|N\|\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">$e$</td>
-<td style="text-align: center;">$|E|$</td>
+<td style="text-align: center;"><span class="arithmatex">\(e\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|E\|\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">$D(N_i)$</td>
-<td style="text-align: center;">Number of edges connecting a node with the target node $N_i$</td>
+<td style="text-align: center;"><span class="arithmatex">\(D(N_i)\)</span></td>
+<td style="text-align: center;">Number of edges connecting a node with the target node <span class="arithmatex">\(N_i\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">$E_i(N_j)$</td>
-<td style="text-align: center;">$N_i$   node connecting $N_j$, where $(N_i, N_j) \in E$</td>
+<td style="text-align: center;"><span class="arithmatex">\(E_i(N_j)\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(N_i\)</span>   node connecting <span class="arithmatex">\(N_j\)</span>, where <span class="arithmatex">\((N_i, N_j) \in E\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">$pos(E_i(N_j))$</td>
-<td style="text-align: center;">Maps the corresponding $E_i(N_j)$ to the position in the <strong>Link</strong> vector</td>
+<td style="text-align: center;"><span class="arithmatex">\(pos(E_i(N_j))\)</span></td>
+<td style="text-align: center;">Maps the corresponding <span class="arithmatex">\(E_i(N_j)\)</span> to the position in the <strong>Link</strong> vector</td>
 </tr>
 <tr>
 <td style="text-align: center;"></center></td>
@@ -831,11 +839,11 @@
 <tr><td>
 <center>
 
-| $1$ | $4$ |
-|:-:|:-:|
-| $4$ | $2$ |
-| $2$ | $3$ |
-| $3$ | $4$ |
+|  $1$  |  $4$  |
+| :---: | :---: |
+|  $4$  |  $2$  |
+|  $2$  |  $3$  |
+|  $3$  |  $4$  |
 </center>
 
 </td><td>
@@ -851,7 +859,7 @@
 </td></tr> </table>
 <p></center></p>
 <h2 id="how-to-store-the-encoded-network-into-the-database">How to store the encoded network into the database?</h2>
-<p>To sum up, there is a <code>file name</code> or <code>url</code> assocciated with the database. Two numeric values, the number of <code>nodes</code>, $n$, and  the number of <code>edges</code>, $e$. Finally, we heave <code>four vectors</code> that define the structure of the network. Then, to store all this data we need <code>five SQL tables</code>:</p>
+<p>To sum up, there is a <code>file name</code> or <code>url</code> assocciated with the database. Two numeric values, the number of <code>nodes</code>, <span class="arithmatex">\(n\)</span>, and  the number of <code>edges</code>, <span class="arithmatex">\(e\)</span>. Finally, we heave <code>four vectors</code> that define the structure of the network. Then, to store all this data we need <code>five SQL tables</code>:</p>
 <p><center></p>
 <table>
 <tr><th>Network | TABLE </th><tr>
@@ -932,6 +940,12 @@
     
     
       <script src="../../../assets/javascripts/bundle.94c44541.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>
