@@ -11,10 +11,10 @@
         <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/Databases/PostgreSQL/">
       
       
-        <link rel="prev" href="../../Code/WORKING/">
+        <link rel="prev" href="../../FortranModules/FortranModules/">
       
       
-        <link rel="next" href="../../FortranModules/FortranModules/">
+        <link rel="next" href="../../Architecture/">
       
       
       <link rel="icon" href="../../../images/black_logo.png">
@@ -65,7 +65,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="deep-orange">
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="orange">
   
     
     
@@ -125,7 +125,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
@@ -135,7 +135,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="red" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
@@ -185,6 +185,18 @@
 </div>
     
     
+      <div class="md-header__source">
+        <a href="https://github.com/arnaupy/EpiGraphX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    arnaupy/EpiGraphX
+  </div>
+</a>
+      </div>
+    
   </nav>
   
 </header>
@@ -217,6 +229,18 @@
     </a>
     EpiGraphX
   </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/arnaupy/EpiGraphX" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    arnaupy/EpiGraphX
+  </div>
+</a>
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -406,11 +430,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Code/WORKING/" class="md-nav__link">
+      <a href="../../FortranModules/FortranModules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Code
+    Fortran Modules
   </span>
   
 
@@ -567,11 +591,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../FortranModules/FortranModules/" class="md-nav__link">
+      <a href="../../Architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Fortran Modules
+    Code Arquitecture
   </span>
   
 
@@ -587,11 +611,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Architecture/" class="md-nav__link">
+      <a href="../../Code/WORKING/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Code Structure
+    Code
   </span>
   
 
@@ -702,6 +726,9 @@
                 
                   
 
+  
+  
+
 
 <h1 id="how-is-the-database-structured">How is the database structured?</h1>
 <p>The whole project is based on networks. For that reason, there must be away to encode netowkr data in some way that it can be quickly read for comupations and extended for new properties.</p>
@@ -709,38 +736,54 @@
 <p>Due to the large data size coming from networks, the most apropiate database has to be be divisible in smaller part so bigger size data is not afected when managing smaller ones. For that reason the ideal database type is a relational database <code>SQL</code>. </p>
 <p>There are lots of relational databases. For the moment, the choosen one is <code>PostreSQL</code>. </p>
 <h2 id="where-to-get-networks-from">Where to get networks from?</h2>
-<p>There are different ways to get data from, but the essential part is that it must be read from somekind of rows and columns file. Why? Networks are described as a graph <span class="arithmatex">\(G\)</span>, composed of a set of nodes, <span class="arithmatex">\(N\)</span>, and edges, <span class="arithmatex">\(E\)</span>, connecting them. In this kind of file, every column correspon to a node and the resulting rows are mapped into edges. From now, where are only talking about graphs that matches the following properties: 
-- Nodes are not connected to themselves | <code>Simple Graph</code>
-- Edges don't have a privileged direction | <code>Undirected Graph</code>
-- Edges don't have weights | <code>Non-Weighted Graph</code>
-- There are no isolated nodes | <code>Connected Graph</code></p>
-<p>A quick example:
-<center></p>
+<p>There are different ways to get data from, but the essential part is that it must be read from somekind of rows and columns file. Why? Networks are described as a graph <span class="arithmatex">\(G\)</span>, composed of a set of nodes, <span class="arithmatex">\(N\)</span>, and edges, <span class="arithmatex">\(E\)</span>, connecting them. In this kind of file, every column correspon to a node and the resulting rows are mapped into edges. From now, where are only talking about graphs that matches the following properties: </p>
+<ul>
+<li>Nodes are not connected to themselves | <code>Simple Graph</code></li>
+<li>Edges don't have a privileged direction | <code>Undirected Graph</code></li>
+<li>Edges don't have weights | <code>Non-Weighted Graph</code></li>
+<li>There are no isolated nodes | <code>Connected Graph</code></li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><center></p>
 <table>
-<tr><th>Rows | Columns </th><th>Nodes | Edges</th></tr>
-<tr><td>
-<center>
-
-|  $1$  |  $4$  |
-| :---: | :---: |
-|  $4$  |  $2$  |
-|  $2$  |  $3$  |
-|  $3$  |  $4$  |
-</center>
-
-</td><td>
-<center>
-
-| $\langle 1,4\rangle$ |
-| :------------------: |
-| $\langle 4,2\rangle$ |
-| $\langle 2,3\rangle$ |
-| $\langle 3,4\rangle$ |
-</center>
-</td></tr> </table>
+<thead>
+<tr>
+<th style="text-align: center;">Col1</th>
+<th style="text-align: center;">Col2</th>
+<th style="text-align: center;">Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 1,4\rangle\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 4,2\rangle\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 2,3\rangle\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 3,4\rangle\)</span></td>
+</tr>
+</tbody>
+</table>
 <p></center></p>
-<p>In the last example we can define the network as a graph <span class="arithmatex">\(G = (V,E)\)</span>, where <span class="arithmatex">\(E = (\langle 1,4\rangle, \langle 4,2\rangle, \langle 2,3\rangle, \langle 3,1\rangle)\)</span> and <span class="arithmatex">\(N = (1,2,3,4)\)</span>. Since this graph is undirected, the edges set is build of elements represented as <span class="arithmatex">\(\langle , \rangle\)</span>. Nodes can be interchanged and the meaning would be the same.</p>
+<p>In this example we can define the network as a graph <span class="arithmatex">\(G = (V,E)\)</span>, where <span class="arithmatex">\(E = (\langle 1,4\rangle, \langle 4,2\rangle, \langle 2,3\rangle, \langle 3,1\rangle)\)</span> and <span class="arithmatex">\(N = (1,2,3,4)\)</span>. Since this graph is undirected, the edges set is build of elements represented as <span class="arithmatex">\(\langle , \rangle\)</span>. Nodes can be interchanged and the meaning would be the same.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>Finally, from now, this kind of data can be read by <code>txt</code> files. </p>
+</div>
 <h2 id="where-to-find-network-files-and-how-to-store-them">Where to find network files and how to store them?</h2>
 <p>This txt files can be imported from two different soureces. The <code>client</code> can update this files into the internal server storage or request it from <code>network data repositories</code>. Then to keep track of client updated files, the text file name should be stored so that the client knows where the data was taken from. Then, id the client requested the data from a repository, the corresponfing url will be saved.</p>
 <table>
@@ -826,78 +869,175 @@
 <td style="text-align: center;"><span class="arithmatex">\(pos(E_i(N_j))\)</span></td>
 <td style="text-align: center;">Maps the corresponding <span class="arithmatex">\(E_i(N_j)\)</span> to the position in the <strong>Link</strong> vector</td>
 </tr>
+</tbody>
+</table>
+<p></center></p>
+<p>That way, network data can be used more efficiently for computation. Then using the same example in <code>Where to find network files and how to store them?</code> section, data will be stored as follows:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><center></p>
+<table>
+<thead>
 <tr>
-<td style="text-align: center;"></center></td>
-<td style="text-align: center;"></td>
+<th style="text-align: center;">Col1</th>
+<th style="text-align: center;">Col2</th>
+<th style="text-align: center;">Vector</th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;">Degree</td>
+<td style="text-align: center;"><span class="arithmatex">\((1, 2, 2, 3)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;">Link</td>
+<td style="text-align: center;"><span class="arithmatex">\((2, 3, 4, 2, 4, 1, 2, 3)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;">Pini</td>
+<td style="text-align: center;"><span class="arithmatex">\((1, 2, 4, 6)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;">Pfin</td>
+<td style="text-align: center;"><span class="arithmatex">\((1, 3, 5, 8)\)</span></td>
 </tr>
 </tbody>
 </table>
-<p>That way, network data can be used more efficiently for computation. Then using the same example in <code>Where to find network files and how to store them?</code> section, data will be stored as follows:</p>
-<p><center></p>
-<table>
-<tr><th>Network in file </th><th>Network encoded</th></tr>
-<tr><td>
-<center>
-
-|  $1$  |  $4$  |
-| :---: | :---: |
-|  $4$  |  $2$  |
-|  $2$  |  $3$  |
-|  $3$  |  $4$  |
-</center>
-
-</td><td>
-<center>
-
-| Vector    |            Value              |
-|:------:   |:--------------------------:   |
-| Degree    |       $(1, 2, 2, 3)$          |
-|  Link     | $(2, 3, 4, 2, 4, 1, 2, 3)$    |
-|  Pini     |       $(1, 2, 4, 6)$          |
-|  Pfin     |       $(1, 3, 5, 8)$          |
-</center>
-</td></tr> </table>
 <p></center></p>
+</div>
 <h2 id="how-to-store-the-encoded-network-into-the-database">How to store the encoded network into the database?</h2>
 <p>To sum up, there is a <code>file name</code> or <code>url</code> assocciated with the database. Two numeric values, the number of <code>nodes</code>, <span class="arithmatex">\(n\)</span>, and  the number of <code>edges</code>, <span class="arithmatex">\(e\)</span>. Finally, we heave <code>four vectors</code> that define the structure of the network. Then, to store all this data we need <code>five SQL tables</code>:</p>
 <p><center></p>
 <table>
-<tr><th>Network | TABLE </th><tr>
-<tr><td>
-<center>
-
-|    Column     |                                        Description                                        |   Dtype   | Optional  |
-|:------------: |:----------------------------------------------------------------------------------------: |:--------: |:--------: |
-|      id       |                                          unic id                                          |    str    |   False   |
-|     label     |                                    name of the network                                    |    str    |   False   |
-|    origin     |                                 network file name \| url                                  |    str    |   False   |
-|  is_private   | whether the network was `requested`(= False) by an url or `updated`(= True) by the user   |   bool    |   False   |
-|    is_scanned     |                whether the network have been read from the file and stored                |   bool    |   False   |
-|     nodes     |                                          $\|N\|$                                          |    int    |   True    |
-|     edges     |                                          $\|E\|$                                          |    int    |   True    |
-|  last_update  |              time when the network `label` or `origin` columns where updated              | datetime(str)     |   False       |
-|   last_scan   |                              last time the network was read                               | datetime(str)     |   True    |
-| time_to_scan  |                        the time it took the encoder to read the network in `sec`                          | str   |   True    |
-</center>
-</td></tr> </table>
+<thead>
+<tr>
+<th style="text-align: center;">Column</th>
+<th style="text-align: center;">Description</th>
+<th style="text-align: center;">Dtype</th>
+<th style="text-align: center;">Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>id</code></td>
+<td style="text-align: center;">unic id</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>label</code></td>
+<td style="text-align: center;">name of the network</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>origin</code></td>
+<td style="text-align: center;">network file name | url</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>is_private</code></td>
+<td style="text-align: center;">whether the network was <code>requested</code>(= False) by an url or <code>updated</code>(= True) by the user</td>
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>is_scanned</code></td>
+<td style="text-align: center;">whether the network have been read from the file and stored</td>
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>nodes</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|N\|\)</span></td>
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">True</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>edges</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|E\|\)</span></td>
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">True</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>last_update</code></td>
+<td style="text-align: center;">time when the network <code>label</code> or <code>origin</code> columns where updated</td>
+<td style="text-align: center;">datetime(str)</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>last_scan</code></td>
+<td style="text-align: center;">last time the network was read</td>
+<td style="text-align: center;">datetime(str)</td>
+<td style="text-align: center;">True</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>time_to_scan</code></td>
+<td style="text-align: center;">the time it took the encoder to read the network in <code>sec</code></td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">True</td>
+</tr>
+</tbody>
+</table>
 <p></center></p>
 <p><center></p>
 <table>
-<tr><th>Degree & Link & Pini & Pfin | TABLE </th><tr>
-<tr><td>
-<center>
-
-|   Column      |                   Description                     | Dtype     | Optional  |
-|:----------:   |:----------------------------------------------:   |:-----:    |:--------: |
-|     id        |                     unic id                       |  str      |   False   |
-| network_id    |         network id from `network table`           |  str      |   False   |
-|    array      | array in string format \| ex: "[1, 26, 31, 23, 2]"    |  array(str)   |   False   |
-|    dtype      | python data type  |  str      |   False   |
-|    size       |   `array` size        |  int      |   False   |
-</center>
-</td></tr> </table>
+<thead>
+<tr>
+<th style="text-align: center;">Column</th>
+<th style="text-align: center;">Description</th>
+<th style="text-align: center;">Dtype</th>
+<th style="text-align: center;">Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>id</code></td>
+<td style="text-align: center;">unic id</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>network_id</code></td>
+<td style="text-align: center;">network id from <code>network table</code></td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>array</code></td>
+<td style="text-align: center;">array in string format | ex: "[1, 26, 31, 23, 2]"</td>
+<td style="text-align: center;">array(str)</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>dtype</code></td>
+<td style="text-align: center;">python data type</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>size</code></td>
+<td style="text-align: center;"><code>array</code> size</td>
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">False</td>
+</tr>
+</tbody>
+</table>
 <p></center></p>
-<p>Notice that in the vector tables, the <code>array</code> is stored as an string representing a python list. The purpouse of this encoding is to prenvent <code>database migration</code> from diferent platforms such as <code>MySQL</code>, <code>MariaDB</code> or <code>SQlite</code>. At least <code>PostgreSQL</code> accepts arrays as datatype but <code>SQlite</code> don't, for example. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In vector tables, the <code>array</code> is stored as an string representing a python list. The purpouse of this encoding is to prenvent <code>database migration</code> from diferent platforms such as <code>MySQL</code>, <code>MariaDB</code> or <code>SQlite</code>. At least <code>PostgreSQL</code> accepts arrays as datatype but <code>SQlite</code> don't, for example. </p>
+</div>
 
 
 
