@@ -3,7 +3,9 @@ Docker takes care of installing Fortran in the app container. To build a Python-
 ```
 f2py -c <fortran-file-path> -m <module-path> 
 ```
-> module-path must be formated with "." instead of "/" | ex: dir1.dir2.module-name`
+
+!!! note
+        module-path must be formated with "." instead of "/" | ex: dir1.dir2.module-name`
 
 ### Fortran script estructure
 ```fortran

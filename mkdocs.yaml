@@ -1,0 +1,73 @@
+site_name: EpiGraphX
+site_url: https://arnaupy.github.io/EpiGraphX
+repo_url: https://github.com/arnaupy/EpiGraphX
+repo_name: arnaupy/EpiGraphX
+
+theme:
+  name: material
+  logo: images/white_logo.png
+  favicon: images/black_logo.png
+
+  # Gihub icon and link to repository
+  icon:
+    repo: fontawesome/brands/github-alt
+
+  palette:
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      accent: orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+nav:
+  - Home: index.md
+  - User Guide:
+      - Installation: user-guide/Installation.md
+      - Getting Started: user-guide/GettingStarted.md
+  - Developer Guide:
+      - Quick Start: dev-guide/QuickStart/QuickStart.md
+      - Interact with the Backend: dev-guide/InteractBackend/InteractBackend.md
+      - Fortran Modules: dev-guide/FortranModules/FortranModules.md
+      - Databases:
+          - Networks Storage: dev-guide/Databases/PostgreSQL.md
+      - Code Arquitecture: dev-guide/Architecture.md
+      - Code: dev-guide/Code/WORKING.md
+
+  - Contributing: Contributing.md
+
+# For emojis
+markdown_extensions:
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - nl2br
+  - admonition
+  - pymdownx.details
+  - tables
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
