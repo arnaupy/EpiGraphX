@@ -39,8 +39,8 @@ This project uses [mkdocs](https://www.mkdocs.org/) to work on the documentation
 
 There are two main documentation fields:
 
-* Developer -> [Developer Guide](./dev-guide/)
-* User -> [User Guide](./user-guide/)
+* Developer -> [Developer Guide](dev-guide/QuickStart/QuickStart.md)
+* User -> [User Guide](user-guide/GettingStarted.md)
 
 !!! warning
     At the moment user documentation is not available :pensive:

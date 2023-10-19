@@ -42,8 +42,13 @@ nav:
       - Fortran Modules: dev-guide/FortranModules/FortranModules.md
       - Databases:
           - Networks Storage: dev-guide/Databases/PostgreSQL.md
+      - Code:
+          - dev-guide/Code/WORKING.md
+          - Core:
+              - Models:
+                  - dev-guide/Code/Core/Models/NetworkModels.md
+                  - dev-guide/Code/Core/Models/FileModels.md
       - Code Arquitecture: dev-guide/Architecture.md
-      - Code: dev-guide/Code/WORKING.md
 
   - Contributing: Contributing.md
 

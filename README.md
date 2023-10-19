@@ -34,9 +34,9 @@ See -> [How is CRUD implemented in the project?](./docs/dev-guide/Features/CRUD.
 See -> [Quick Start](./docs/dev-guide/QuickStart/QuickStart.md) :rocket:
 
 ## Contributing
-See -> [Contributing](./docs/dev-guide/Contributing.md) :bulb:
+See -> [Contributing](./docs/Contributing.md) :bulb:
 
-Contact -> 01arnauperez@gmail.com
+Contact -> [01arnauperez@gmail.com](01arnauperez@gmail.com)
 
 ## Goal
 :star: Build an app to simulate and study disease spreading processes in networks, with the aim of investigating possible strategies to combat or limit the spread of diseases.
