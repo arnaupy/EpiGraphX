@@ -14,7 +14,7 @@
         <link rel="prev" href="../Code/Core/Models/FileModels/">
       
       
-        <link rel="next" href="../../Contributing/">
+        <link rel="next" href="../Workflow/">
       
       
       <link rel="icon" href="../../images/black_logo.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Code Arquitecture - EpiGraphX</title>
+        <title>Arquitecture - EpiGraphX</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Code Arquitecture
+              Arquitecture
             
           </span>
         </div>
@@ -715,16 +715,73 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Arquitecture
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    Code Arquitecture
+    Arquitecture
   </span>
   
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core" class="md-nav__link">
+    Core
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -776,6 +833,21 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#core" class="md-nav__link">
+    Core
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -793,10 +865,15 @@
 
 
 <h1 id="how-is-code-structured">How is code structured?</h1>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><img alt="👷" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f477.svg" title=":construction_worker:" /> Work in progress...</p>
-</div>
+<p><img alt="Arquitecture diagram" src="../../images/CodeArchitecture.png" /></p>
+<h2 id="core">Core</h2>
+<p>This is the main piece of the code that manages the interaction between the database and backend. It consists of four interconnected parts:</p>
+<ul>
+<li><code>Features</code>: responsible for app functionalities. </li>
+<li><code>Models</code>: represent storage objects, which can inherit from file systems or any database in <code>DATABASES</code>. </li>
+<li><code>Schemas</code>: represent <code>Models</code> sent through the API.</li>
+<li><code>Processors</code>: interact with objects created in models if needed.</li>
+</ul>
 
 
 

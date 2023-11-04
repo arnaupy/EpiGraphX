@@ -456,8 +456,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-containers" class="md-nav__link">
-    Build containers
+  <a href="#create-containers" class="md-nav__link">
+    Create containers
   </a>
   
 </li>
@@ -771,7 +771,27 @@
         
   
   <span class="md-ellipsis">
-    Code Arquitecture
+    Arquitecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Workflow
   </span>
   
 
@@ -834,8 +854,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#build-containers" class="md-nav__link">
-    Build containers
+  <a href="#create-containers" class="md-nav__link">
+    Create containers
   </a>
   
 </li>
@@ -873,18 +893,14 @@
 
 
 <h1 id="how-to-interact-with-the-backend">How to interact with the backend?</h1>
-<p>This project is using <code>Docker</code> containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the <a href="../../../Makefile">Makefile</a>. That file is repossible to run commands using <code>make</code> followed by the comand specified in that file.</p>
+<p>This project is using <code>Docker</code> containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the <a href="https://github.com/arnaupy/EpiGraphX/blob/develop/Makefile">Makefile</a>. That file is repossible to run commands using <code>make</code> followed by the comand specified in that file.</p>
 <p>To see information about make comand, run:<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make help
 </span></code></pre></div></p>
-<h2 id="build-containers">Build containers</h2>
-<p>The following comand creates the corresponding images and build container specified in <code>Docker files</code>.<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make build
+<h2 id="create-containers">Create containers</h2>
+<p>The following comand creates the corresponding images and create container specified in <code>Docker files</code>.<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make create
 </span></code></pre></div></p>
-<ul>
-<li>This comand will also run the server at port <code>8080</code>which you can access with <code>FastAPI docs</code> automatically at http://localhost:8080/docs</li>
-</ul>
-<p><img alt="App" src="../FastAPI-Docs.png" /> </p>
 <h2 id="run-the-server">Run the server</h2>
 <p>After building containers, you can restart the server:<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a># With logs
@@ -893,6 +909,11 @@
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a># In detached mode
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>make run
 </span></code></pre></div></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Theese comands will also run the server at port <code>8080</code>which you can access with <code>FastAPI docs</code> automatically at <a href="http://localhost:8080/docs">http://localhost:8080/docs</a></p>
+</div>
+<p><img alt="App" src="../FastAPI-Docs.png" /></p>
 <h2 id="stop-remove-containers">Stop &amp; Remove containers</h2>
 <p>If you runned the server in <code>detached mode</code>, you can use the following comand to stop the processes.<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>make stop
