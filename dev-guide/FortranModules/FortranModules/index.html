@@ -865,14 +865,15 @@
 
 
 <h1 id="how-to-build-fortran-modules-for-python">How to build Fortran modules for Python</h1>
-<p>Docker takes care of installing Fortran in the app container. To build a Python-readable file from a Fortran script, it's necessary to run the following command inside the app container (<a href="https://kodekloud.com/blog/docker-exec/#" target="_blank">How to Enter Into a Docker Container's Shell?</a>).<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>f2py -c &lt;fortran-file-path&gt; -m &lt;module-path&gt; 
-</span></code></pre></div></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<div class="language-text highlight"><pre><span></span><code>module-path must be formated with &quot;.&quot; instead of &quot;/&quot; | ex: dir1.dir2.module-name`
-</code></pre></div>
+<p>Docker takes care of installing Fortran in the app container. To build a Python-readable file from a Fortran script, it's necessary to run the following command inside the app container (<a href="https://kodekloud.com/blog/docker-exec/#" target="_blank">How to Enter Into a Docker Container's Shell?</a>).</p>
+<div class="annotate">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>f2py -c &lt;fortran-file-path&gt; -m &lt;module-path&gt; (1)
+</span></code></pre></div>
 </div>
+<ol>
+<li>❗ <code>module-path</code> must be formated with "." instead of "/" <br />
+   ✨ Example -&gt; dir1.dir2.module_name</li>
+</ol>
 <h3 id="fortran-script-estructure">Fortran script estructure</h3>
 <p><div class="language-fortran highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">subroutine </span><span class="n">subroutineName</span><span class="p">(</span><span class="n">input1</span><span class="p">,</span><span class="w"> </span><span class="n">input2</span><span class="p">,</span><span class="w"> </span><span class="n">output1</span><span class="p">)</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
