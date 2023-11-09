@@ -1,11 +1,13 @@
 # How to build Fortran modules for Python
-Docker takes care of installing Fortran in the app container. To build a Python-readable file from a Fortran script, it's necessary to run the following command inside the app container ([How to Enter Into a Docker Container's Shell?](https://kodekloud.com/blog/docker-exec/#)).
+Docker takes care of installing Fortran in the app container. To build a Python-readable file from a Fortran script, it's necessary to run the following command inside the app container ([How to Enter Into a Docker Container's Shell?](https://kodekloud.com/blog/docker-exec/#){:target="_blank"}).
+<div class="annotate" markdown>
 ```
-f2py -c <fortran-file-path> -m <module-path> 
+f2py -c <fortran-file-path> -m <module-path> (1)
 ```
+</div>
 
-!!! note
-        module-path must be formated with "." instead of "/" | ex: dir1.dir2.module-name`
+1. ❗ `module-path` must be formated with "." instead of "/" 
+   ✨ Example -> dir1.dir2.module_name
 
 ### Fortran script estructure
 ```fortran

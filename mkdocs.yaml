@@ -48,13 +48,22 @@ nav:
               - Models:
                   - dev-guide/Code/Core/Models/NetworkModels.md
                   - dev-guide/Code/Core/Models/FileModels.md
-      - Code Arquitecture: dev-guide/Architecture.md
+      - Arquitecture: dev-guide/Architecture.md
+      - Workflow: dev-guide/Workflow.md
 
   - Contributing: Contributing.md
 
 # For emojis
 markdown_extensions:
   - attr_list
+  - md_in_html
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -66,7 +75,6 @@ markdown_extensions:
       pygments_lang_class: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
-  - pymdownx.superfences
   - nl2br
   - admonition
   - pymdownx.details
