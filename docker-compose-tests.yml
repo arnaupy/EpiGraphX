@@ -2,14 +2,14 @@ version: "3.9"
 
 services:
   # Defining app image
-  app:
+  app_test:
     build:
       context: .
-      dockerfile: Dockerfile.dev
-    container_name: chanel-app
+      dockerfile: Dockerfile.test
+    container_name: chanel-app-test
     # Command to run the api
-    command: uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
-    
+    command: pytest tests 
+
     # Environment variables
     environment:
       # By default in postgres image the user ir "postgres"
@@ -19,19 +19,16 @@ services:
       # By default in postgres image the initial db is named as the user "postgres"
       - POSTGRES_DB_NAME=postgres
       # db solves the problem of connectivity after trying with "postgres" and "localhost"
-      - POSTGRES_HOST=postgres-db
-    ports:
-      #port on machine:port on container
-      - 8080:80
+      - POSTGRES_HOST=postgres-db-tests
     volumes:
       - ./app:/app
-    networks:
-      - app-data
+      - ./tests:/tests
+  
     depends_on:
-      - postgres-db
+      - postgres-db-tests
 
   # Defining the database image
-  postgres-db:
+  postgres-db-tests:
     image: postgres
     restart: always
 
@@ -43,23 +40,9 @@ services:
       # POSTGRES_DB: default(POSTGRES_USER)
     ports:
       #port on machine:port on container
-      - 5432:5432
-    container_name: chanel-postgres-db
-    networks:
-      - app-data
-    volumes:
-      #path on my mac machine:path to postgres default folder
-      - postgres-data:/var/lib/postgresql/data
+      - 6432:5432
+    container_name: chanel-postgres-db-tests
     privileged: true
 
-volumes:
-  postgres-data:
-    name: postgres-data
-    external: true
 
-networks:
-  app-data:
-    name: app-data
-    external: true
-
-
+  
