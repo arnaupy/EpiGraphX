@@ -14,7 +14,7 @@ PostgreSQL database:
     +
 """
 from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import sessionmaker
 import os
 
 
@@ -32,8 +32,6 @@ SQLALCHEMY_DATABASE_URL = f"postgresql://{user_name}:{database_key}@{host_name}:
 engine = create_engine(SQLALCHEMY_DATABASE_URL, echo = False)
 Session = sessionmaker(autocommit = False, autoflush = False, bind = engine)
     
-# Instanciate the Base class to build database tables as python objects
-Base = declarative_base()
  
 def get_db():
     """Returns the database Session object to make requests"""

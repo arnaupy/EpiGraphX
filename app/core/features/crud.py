@@ -67,6 +67,7 @@ from sqlalchemy.orm import Session
 from fastapi.encoders import jsonable_encoder
 import time
 import numpy as np
+import validators
 
 from ..schemas import network_schemas
 from ..models import network_models

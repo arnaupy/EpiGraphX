@@ -27,7 +27,6 @@ router = APIRouter(prefix = "/networks", tags = ["networks"])
 @router.post("/", response_model = network_schemas.Network)
 def create_network(network: network_schemas.NetworkCreate, db: Session = Depends(get_db)):
     
-    
     # Checks if 'Network label' is not already in use
     db_network = crud.pull_network_by_label(db = db, network_label = network.label)
     if db_network:
@@ -104,6 +103,11 @@ def update_network(network_id: str, network_update: network_schemas.NetworkUpdat
     db_network = crud.pull_network(db, network_id = network_id)
     if db_network is None:
         raise HTTPException(status_code = 404, detail = "Network not found")
+    
+    # Check if `network label` is already in use
+    if network_update.label:
+        if crud.pull_network_by_label(db, network_label = network_update.label) and (network_update.label != db_network.label):
+            raise HTTPException(status_code = 404, detail = "Network label is already in use")
     
     return {"updates": crud.update_network(db = db, network = db_network, network_update = network_update)}
 

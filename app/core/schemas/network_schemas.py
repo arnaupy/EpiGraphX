@@ -9,7 +9,7 @@ Process FastAPI responses as schemas to SQLAlchemy database objects:
     |       
     +
 """
-from pydantic import BaseModel, field_validator
+from pydantic import BaseModel, field_validator, root_validator
 from datetime import datetime
 import validators
 
@@ -103,24 +103,42 @@ class Pfin(PfinBase):
 class NetworkBase(BaseModel):
     """Network class for `Network` table"""
     label: str 
-    is_private: bool
     origin: str
+    is_private: bool = True
+    
+    @classmethod
+    def _is_private(cls, origin):
+        if origin.endswith(".txt"):
+            return True
+        elif validators.url(origin):
+            return False
+        
     
     @field_validator("origin")
     @classmethod
-    def origin_is_url_or_filepath(cls, value, values):
+    def origin_is_url_or_filepath(cls, value):
         """
         Validates that whether the network was updated by the client
         or requested from a network data repository, its format is correct
         """
         
-        if values.data["is_private"] and value[-len(".txt"):] != ".txt":
-            raise NetworkOriginError("If network is `private` then `origin` must be a `.txt file`")
+        origin = value
+   
+        if cls._is_private(origin) == None:
+            raise NetworkOriginError(f"Origin must be a valid `url` or a `.txt` file")
+    
+        return origin
         
-        elif not values.data["is_private"] and not validators.url(value):
-            raise NetworkOriginError("If network is `public` then `origin` must be an `url`")
+    
+    @field_validator("is_private")
+    @classmethod
+    def assign_id_private(cls, value, values):
+        return cls._is_private(values.data.get("origin"))
         
-        return value
+
+    class ConfigDict:
+        from_attributes = True
+        validate_assignment = True
     
 
 class NetworkCreate(NetworkBase):
@@ -141,9 +159,6 @@ class NetworkSummary(NetworkBase):
     last_update: datetime
     last_scan: datetime | None = None
     time_to_scan: str | None = None
-    
-    class Config:
-        arbitrary_types_allowed = True
 
 class Network(NetworkSummary):
     """Network database mapping"""
@@ -152,7 +167,7 @@ class Network(NetworkSummary):
     pini: Pini | None = None
     pfin: Pfin | None = None
 
-    class ConfigDict:
-        from_attributes = True
+    # class ConfigDict:
+    #     from_attributes = True
         
     
