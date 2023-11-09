@@ -4,7 +4,7 @@ The whole project is based on networks. For that reason, there must be away to e
 ## What database to use?
 Due to the large data size coming from networks, the most apropiate database has to be be divisible in smaller part so bigger size data is not afected when managing smaller ones. For that reason the ideal database type is a relational database `SQL`. 
 
-There are lots of relational databases. For the moment, the choosen one is `PostreSQL`. 
+There are lots of relational databases. For the moment, the choosen one is `PostgreSQL`. 
 
 ## Where to get networks from?
 There are different ways to get data from, but the essential part is that it must be read from somekind of rows and columns file. Why? Networks are described as a graph $G$, composed of a set of nodes, $N$, and edges, $E$, connecting them. In this kind of file, every column correspon to a node and the resulting rows are mapped into edges. From now, where are only talking about graphs that matches the following properties: 
@@ -83,37 +83,39 @@ That way, network data can be used more efficiently for computation. Then using 
 ## How to store the encoded network into the database?
 To sum up, there is a `file name` or `url` assocciated with the database. Two numeric values, the number of `nodes`, $n$, and  the number of `edges`, $e$. Finally, we heave `four vectors` that define the structure of the network. Then, to store all this data we need `five SQL tables`:
 
-<center>
+=== "Network"
+    <center>
 
-|    Column    	|                                        Description                                       	|   Dtype  	| Optional 	|
-|:------------:	|:----------------------------------------------------------------------------------------:	|:--------:	|:--------:	|
-|      `id`      	|                                          unic id                                         	|    str   	|   False  	|
-|     `label`    	|                                    name of the network                                   	|    str   	|   False  	|
-|    `origin`   	|                                 network file name \| url                                 	|    str   	|   False  	|
-|  `is_private` 	| whether the network was `requested`(= False) by an url or `updated`(= True) by the user  	|   bool   	|   False  	|
-|    `is_scanned`  	|                whether the network have been read from the file and stored               	|   bool   	|   False  	|
-|     `nodes`    	|                                          $\|N\|$                                         	|    int   	|   True   	|
-|     `edges`   	|                                          $\|E\|$                                         	|    int   	|   True   	|
-|  `last_update` 	|              time when the network `label` or `origin` columns where updated             	| datetime(str) 	|   False   	|
-|   `last_scan`  	|                              last time the network was read                              	| datetime(str) 	|   True   	|
-| `time_to_scan` 	|                        the time it took the encoder to read the network in `sec`                      	| str 	|   True   	|
+    |    Column    	|                                        Description                                       	|   Dtype  	| Optional 	|
+    |:------------:	|:----------------------------------------------------------------------------------------:	|:--------:	|:--------:	|
+    |      `id`      	|                                          unic id                                         	|    str   	|   False  	|
+    |     `label`    	|                                    name of the network                                   	|    str   	|   False  	|
+    |    `origin`   	|                                 network file name \| url                                 	|    str   	|   False  	|
+    |  `is_private` 	| whether the network was `requested`(= False) by an url or `updated`(= True) by the user  	|   bool   	|   False  	|
+    |    `is_scanned`  	|                whether the network have been read from the file and stored               	|   bool   	|   False  	|
+    |     `nodes`    	|                                          $\|N\|$                                         	|    int   	|   True   	|
+    |     `edges`   	|                                          $\|E\|$                                         	|    int   	|   True   	|
+    |  `last_update` 	|              time when the network `label` or `origin` columns where updated             	| datetime(str) 	|   False   	|
+    |   `last_scan`  	|                              last time the network was read                              	| datetime(str) 	|   True   	|
+    | `time_to_scan` 	|                        the time it took the encoder to read the network in `sec`                      	| str 	|   True   	|
 
-</center>
+    </center>
 
-<center>
+=== "Degree & Link & Pini & Pfin"
+    <center>
 
-|   Column   	|                   Description                  	| Dtype 	| Optional 	|
-|:----------:	|:----------------------------------------------:	|:-----:	|:--------:	|
-|     `id`   	|                     unic id                    	|  str  	|   False  	|
-| `network_id`	|         network id from `network table`        	|  str  	|   False  	|
-|    `array`   	| array in string format \| ex: "[1, 26, 31, 23, 2]" 	|  array(str)  	|   False  	|
-|    `dtype`   	| python data type 	|  str  	|   False  	|
-|    `size`    	|   `array` size    	|  int  	|   False  	|
+    |   Column   	|                   Description                  	| Dtype 	| Optional 	|
+    |:----------:	|:----------------------------------------------:	|:-----:	|:--------:	|
+    |     `id`   	|                     unic id                    	|  str  	|   False  	|
+    | `network_id`	|         network id from `network table`        	|  str  	|   False  	|
+    |    `array`   	| array in string format \| ex: "[1, 26, 31, 23, 2]" 	|  array(str)  	|   False  	|
+    |    `dtype`   	| python data type 	|  str  	|   False  	|
+    |    `size`    	|   `array` size    	|  int  	|   False  	|
 
-</center>
+    </center>
 
-!!! note
-    In vector tables, the `array` is stored as an string representing a python list. The purpouse of this encoding is to prenvent `database migration` from diferent platforms such as `MySQL`, `MariaDB` or `SQlite`. At least `PostgreSQL` accepts arrays as datatype but `SQlite` don't, for example. 
+    !!! note
+        In vector tables, the `array` is stored as an string representing a python list. The purpouse of this encoding is to prenvent `database migration` from diferent platforms such as `MySQL`, `MariaDB` or `SQlite`. At least `PostgreSQL` accepts arrays as datatype but `SQlite` don't, for example. 
 
 
 

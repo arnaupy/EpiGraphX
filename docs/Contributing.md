@@ -15,17 +15,9 @@ git clone https://github.com/arnaupy/EpiGraphX.git
 ```
 
 * Set your `virtual environment`:
-=== "Mac"
-    ```
-    python3 -m venv env
-    ```
-
-=== "Other"
-    ```
-    python -m venv env
-    ```
-
-
+```
+python -m venv env  
+``` 
 * Activate the virtual enviroment:
 ```
 source ./env/bin/activate
@@ -44,7 +36,7 @@ This project uses [mkdocs](https://www.mkdocs.org/){:target="_blank"} to work on
 There are two main documentation fields:
 
 * Developer -> [Developer Guide](dev-guide/QuickStart/QuickStart.md)
-* User -> [User Guide](user-guide/GettingStarted.md)
+* User -> [User Guide](user-guide/GettingStarted/GettingStarted.md)
 
 !!! warning
     At the moment user documentation is not available :pensive:

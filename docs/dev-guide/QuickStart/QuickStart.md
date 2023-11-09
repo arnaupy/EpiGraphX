@@ -175,7 +175,18 @@ If you don't add a label, it won't be modified, but if you want to update the or
     Check that the network is correctly updated by retrieving the network once again. 
 
 ## Delete network
-Finally, you can try to delete the network using the `Delete Network` function by specifying its id. The response will be:
+Finally, you can try to delete the network using the `Delete Network` function.
+=== "FastAPI docs"
+    Specifying the network `id`.
+
+=== "Terminal"
+    ```bash
+    curl -X 'DELETE' \
+      'http://localhost:8080/networks/jsl3b6wsqfmmq9v41bbfun88mykhuh' \
+      -H 'accept: application/json'
+    ```
+
+The corresponding response:
 ```json
 {
     "deleted": true
