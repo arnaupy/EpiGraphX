@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/QuickStart/QuickStart/">
       
       
-        <link rel="prev" href="../../../user-guide/GettingStarted/">
+        <link rel="prev" href="../../../user-guide/GettingStarted/GettingStarted/">
       
       
         <link rel="next" href="../../InteractBackend/InteractBackend/">
@@ -305,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../user-guide/Installation/" class="md-nav__link">
+      <a href="../../../user-guide/Installation/Installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -325,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../user-guide/GettingStarted/" class="md-nav__link">
+      <a href="../../../user-guide/GettingStarted/GettingStarted/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -581,7 +581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Databases/PostgreSQL/" class="md-nav__link">
+      <a href="../../Databases/NetworkStorage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1140,10 +1140,24 @@
 <p>Check that the network is correctly updated by retrieving the network once again. </p>
 </div>
 <h2 id="delete-network">Delete network</h2>
-<p>Finally, you can try to delete the network using the <code>Delete Network</code> function by specifying its id. The response will be:<br />
-<div class="language-json highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
-</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">}</span>
+<p>Finally, you can try to delete the network using the <code>Delete Network</code> function.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">FastAPI docs</label><label for="__tabbed_6_2">Terminal</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Specifying the network <code>id</code>.</p>
+</div>
+<div class="tabbed-block">
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>curl<span class="w"> </span>-X<span class="w"> </span><span class="s1">&#39;DELETE&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="s1">&#39;http://localhost:8080/networks/jsl3b6wsqfmmq9v41bbfun88mykhuh&#39;</span><span class="w"> </span><span class="se">\</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;accept: application/json&#39;</span>
+</span></code></pre></div>
+</div>
+</div>
+</div>
+<p>The corresponding response:<br />
+<div class="language-json highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="p">{</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="nt">&quot;deleted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">}</span>
 </span></code></pre></div></p>
 
 

@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/InteractBackend/InteractBackend/">
+        <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/Databases/NetworkStorage/">
       
       
-        <link rel="prev" href="../../QuickStart/QuickStart/">
+        <link rel="prev" href="../../FortranModules/FortranModules/">
       
       
-        <link rel="next" href="../../FortranModules/FortranModules/">
+        <link rel="next" href="../../Code/WORKING/">
       
       
       <link rel="icon" href="../../../images/black_logo.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Interact with the Backend - EpiGraphX</title>
+        <title>Networks Storage - EpiGraphX</title>
       
     
     
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-interact-with-the-backend" class="md-skip">
+        <a href="#how-is-the-database-structured" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interact with the Backend
+              Networks Storage
             
           </span>
         </div>
@@ -408,29 +408,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Interact with the Backend
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../InteractBackend/InteractBackend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -439,47 +419,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#create-containers" class="md-nav__link">
-    Create containers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#run-the-server" class="md-nav__link">
-    Run the server
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#stop-remove-containers" class="md-nav__link">
-    Stop &amp; Remove containers
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -509,18 +448,20 @@
                 
   
   
+    
+  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
@@ -534,7 +475,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             Databases
@@ -545,9 +486,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Databases/NetworkStorage/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Networks Storage
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -556,6 +517,61 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-database-to-use" class="md-nav__link">
+    What database to use?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-get-networks-from" class="md-nav__link">
+    Where to get networks from?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-find-network-files-and-how-to-store-them" class="md-nav__link">
+    Where to find network files and how to store them?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-scan-network-data" class="md-nav__link">
+    How to scan network data?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-store-the-encoded-network-into-the-database" class="md-nav__link">
+    How to store the encoded network into the database?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -854,22 +870,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-containers" class="md-nav__link">
-    Create containers
+  <a href="#what-database-to-use" class="md-nav__link">
+    What database to use?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#run-the-server" class="md-nav__link">
-    Run the server
+  <a href="#where-to-get-networks-from" class="md-nav__link">
+    Where to get networks from?
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#stop-remove-containers" class="md-nav__link">
-    Stop &amp; Remove containers
+  <a href="#where-to-find-network-files-and-how-to-store-them" class="md-nav__link">
+    Where to find network files and how to store them?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-scan-network-data" class="md-nav__link">
+    How to scan network data?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-store-the-encoded-network-into-the-database" class="md-nav__link">
+    How to store the encoded network into the database?
   </a>
   
 </li>
@@ -892,40 +922,322 @@
   
 
 
-<h1 id="how-to-interact-with-the-backend">How to interact with the backend?</h1>
-<p>This project is using <code>Docker</code> containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the <a href="https://github.com/arnaupy/EpiGraphX/blob/main/Makefile">Makefile</a>. That file is repossible to run commands using <code>make</code> followed by the comand specified in that file.</p>
-<p>To see information about make comand, run:<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make help
-</span></code></pre></div></p>
-<h2 id="create-containers">Create containers</h2>
-<p>The following comand creates the corresponding images and create container specified in <code>Docker files</code>.<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make create
-</span></code></pre></div></p>
-<h2 id="run-the-server">Run the server</h2>
-<p>After building containers, you can restart the server:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With logs</label><label for="__tabbed_1_2">Detach mode</label></div>
+<h1 id="how-is-the-database-structured">How is the database structured?</h1>
+<p>The whole project is based on networks. For that reason, there must be away to encode netowkr data in some way that it can be quickly read for comupations and extended for new properties.</p>
+<h2 id="what-database-to-use">What database to use?</h2>
+<p>Due to the large data size coming from networks, the most apropiate database has to be be divisible in smaller part so bigger size data is not afected when managing smaller ones. For that reason the ideal database type is a relational database <code>SQL</code>. </p>
+<p>There are lots of relational databases. For the moment, the choosen one is <code>PostgreSQL</code>. </p>
+<h2 id="where-to-get-networks-from">Where to get networks from?</h2>
+<p>There are different ways to get data from, but the essential part is that it must be read from somekind of rows and columns file. Why? Networks are described as a graph <span class="arithmatex">\(G\)</span>, composed of a set of nodes, <span class="arithmatex">\(N\)</span>, and edges, <span class="arithmatex">\(E\)</span>, connecting them. In this kind of file, every column correspon to a node and the resulting rows are mapped into edges. From now, where are only talking about graphs that matches the following properties: </p>
+<ul>
+<li>Nodes are not connected to themselves | <code>Simple Graph</code></li>
+<li>Edges don't have a privileged direction | <code>Undirected Graph</code></li>
+<li>Edges don't have weights | <code>Non-Weighted Graph</code></li>
+<li>There are no isolated nodes | <code>Connected Graph</code></li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Col1</th>
+<th style="text-align: center;">Col2</th>
+<th style="text-align: center;">Edge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 1,4\rangle\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 4,2\rangle\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 2,3\rangle\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\langle 3,4\rangle\)</span></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>In this example we can define the network as a graph <span class="arithmatex">\(G = (V,E)\)</span>, where <span class="arithmatex">\(E = (\langle 1,4\rangle, \langle 4,2\rangle, \langle 2,3\rangle, \langle 3,1\rangle)\)</span> and <span class="arithmatex">\(N = (1,2,3,4)\)</span>. Since this graph is undirected, the edges set is build of elements represented as <span class="arithmatex">\(\langle , \rangle\)</span>. Nodes can be interchanged and the meaning would be the same.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Finally, from now, this kind of data can be read by <code>txt</code> files. </p>
+</div>
+<h2 id="where-to-find-network-files-and-how-to-store-them">Where to find network files and how to store them?</h2>
+<p>This txt files can be imported from two different soureces. The <code>client</code> can update this files into the internal server storage or request it from <code>network data repositories</code>. Then to keep track of client updated files, the text file name should be stored so that the client knows where the data was taken from. Then, id the client requested the data from a repository, the corresponfing url will be saved.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Method</th>
+<th style="text-align: center;">Storing</th>
+<th style="text-align: center;">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>Updated</code> by the client</td>
+<td style="text-align: center;">file name</td>
+<td style="text-align: center;">UniformNetwork.txt</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>Requested</code> from network data repository</td>
+<td style="text-align: center;">url</td>
+<td style="text-align: center;">https://www.network-data-repository/network.txt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-scan-network-data">How to scan network data?</h2>
+<p>Once the network file is abailable, its time to process and store its data into the <code>PostgreSQL</code> database in the most accessible and efficiently way for later computations. To do that, the network must be stored in <code>four</code> different vectors. </p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Vector</strong></th>
+<th style="text-align: center;"><strong>Dim</strong></th>
+<th style="text-align: center;"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Degree</td>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(D(N_1), ... , D(N_n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Link</td>
+<td style="text-align: center;"><span class="arithmatex">\(2e\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(E_1(N_1), ... , E_j(N_1), ... , E_1(N_n), ... , E_1(N_n)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Pini</td>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(1, pos(E_j(N_1)) + 1, ... , pos(E_1(N_n))\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;">Pfin</td>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(pos(E_j(N_1)), ... , 2·e\)</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(n\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|N\|\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(e\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|E\|\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(D(N_i)\)</span></td>
+<td style="text-align: center;">Number of edges connecting a node with the target node <span class="arithmatex">\(N_i\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(E_i(N_j)\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(N_i\)</span>   node connecting <span class="arithmatex">\(N_j\)</span>, where <span class="arithmatex">\((N_i, N_j) \in E\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(pos(E_i(N_j))\)</span></td>
+<td style="text-align: center;">Maps the corresponding <span class="arithmatex">\(E_i(N_j)\)</span> to the position in the <strong>Link</strong> vector</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>That way, network data can be used more efficiently for computation. Then using the same example in <code>Where to find network files and how to store them?</code> section, data will be stored as follows:</p>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Col1</th>
+<th style="text-align: center;">Col2</th>
+<th style="text-align: center;">Vector</th>
+<th style="text-align: center;">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(1\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;">Degree</td>
+<td style="text-align: center;"><span class="arithmatex">\((1, 2, 2, 3)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;">Link</td>
+<td style="text-align: center;"><span class="arithmatex">\((2, 3, 4, 2, 4, 1, 2, 3)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(2\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;">Pini</td>
+<td style="text-align: center;"><span class="arithmatex">\((1, 2, 4, 6)\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(3\)</span></td>
+<td style="text-align: center;"><span class="arithmatex">\(4\)</span></td>
+<td style="text-align: center;">Pfin</td>
+<td style="text-align: center;"><span class="arithmatex">\((1, 3, 5, 8)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+</div>
+<h2 id="how-to-store-the-encoded-network-into-the-database">How to store the encoded network into the database?</h2>
+<p>To sum up, there is a <code>file name</code> or <code>url</code> assocciated with the database. Two numeric values, the number of <code>nodes</code>, <span class="arithmatex">\(n\)</span>, and  the number of <code>edges</code>, <span class="arithmatex">\(e\)</span>. Finally, we heave <code>four vectors</code> that define the structure of the network. Then, to store all this data we need <code>five SQL tables</code>:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Network</label><label for="__tabbed_1_2">Degree &amp; Link &amp; Pini &amp; Pfin</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>make devrun
-</span></code></pre></div>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Column</th>
+<th style="text-align: center;">Description</th>
+<th style="text-align: center;">Dtype</th>
+<th style="text-align: center;">Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>id</code></td>
+<td style="text-align: center;">unic id</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>label</code></td>
+<td style="text-align: center;">name of the network</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>origin</code></td>
+<td style="text-align: center;">network file name | url</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>is_private</code></td>
+<td style="text-align: center;">whether the network was <code>requested</code>(= False) by an url or <code>updated</code>(= True) by the user</td>
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>is_scanned</code></td>
+<td style="text-align: center;">whether the network have been read from the file and stored</td>
+<td style="text-align: center;">bool</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>nodes</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|N\|\)</span></td>
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">True</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>edges</code></td>
+<td style="text-align: center;"><span class="arithmatex">\(\|E\|\)</span></td>
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">True</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>last_update</code></td>
+<td style="text-align: center;">time when the network <code>label</code> or <code>origin</code> columns where updated</td>
+<td style="text-align: center;">datetime(str)</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>last_scan</code></td>
+<td style="text-align: center;">last time the network was read</td>
+<td style="text-align: center;">datetime(str)</td>
+<td style="text-align: center;">True</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>time_to_scan</code></td>
+<td style="text-align: center;">the time it took the encoder to read the network in <code>sec</code></td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">True</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
 </div>
 <div class="tabbed-block">
-<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>make run
-</span></code></pre></div>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Column</th>
+<th style="text-align: center;">Description</th>
+<th style="text-align: center;">Dtype</th>
+<th style="text-align: center;">Optional</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>id</code></td>
+<td style="text-align: center;">unic id</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>network_id</code></td>
+<td style="text-align: center;">network id from <code>network table</code></td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>array</code></td>
+<td style="text-align: center;">array in string format | ex: "[1, 26, 31, 23, 2]"</td>
+<td style="text-align: center;">array(str)</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>dtype</code></td>
+<td style="text-align: center;">python data type</td>
+<td style="text-align: center;">str</td>
+<td style="text-align: center;">False</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>size</code></td>
+<td style="text-align: center;"><code>array</code> size</td>
+<td style="text-align: center;">int</td>
+<td style="text-align: center;">False</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In vector tables, the <code>array</code> is stored as an string representing a python list. The purpouse of this encoding is to prenvent <code>database migration</code> from diferent platforms such as <code>MySQL</code>, <code>MariaDB</code> or <code>SQlite</code>. At least <code>PostgreSQL</code> accepts arrays as datatype but <code>SQlite</code> don't, for example. </p>
 </div>
 </div>
 </div>
-<p>These comands will run the server at port <code>8080</code>which you can access with <code>FastAPI docs</code> automatically at <a href="http://localhost:8080/docs">http://localhost:8080/docs</a>.</p>
-<p><img alt="App" src="../FastAPI-Docs.png" /></p>
-<h2 id="stop-remove-containers">Stop &amp; Remove containers</h2>
-<ul>
-<li>You can use the following comand to stop the containers running process.<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make stop
-</span></code></pre></div></li>
-<li>If you want to remove containers, images and volumes:<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make down
-</span></code></pre></div></li>
-</ul>
+</div>
 
 
 

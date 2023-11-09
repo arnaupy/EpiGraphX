@@ -305,7 +305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-guide/Installation/" class="md-nav__link">
+      <a href="../../user-guide/Installation/Installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -325,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../user-guide/GettingStarted/" class="md-nav__link">
+      <a href="../../user-guide/GettingStarted/GettingStarted/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -486,7 +486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Databases/PostgreSQL/" class="md-nav__link">
+      <a href="../Databases/NetworkStorage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -758,6 +758,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#routers" class="md-nav__link">
+    Routers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#databases" class="md-nav__link">
+    Databases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    View
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -846,6 +867,27 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#routers" class="md-nav__link">
+    Routers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#databases" class="md-nav__link">
+    Databases
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view" class="md-nav__link">
+    View
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -865,15 +907,29 @@
 
 
 <h1 id="how-is-code-structured">How is code structured?</h1>
+<p>The app is structured with a specific number of layers to ensure that the code is <code>expandable</code> and <code>easily fixable</code> if necessary. For this reason, the project is divided into four different blocks that are interconnected.</p>
 <p><img alt="Arquitecture diagram" src="../../images/CodeArchitecture.png" /></p>
 <h2 id="core">Core</h2>
 <p>This is the main piece of the code that manages the interaction between the database and backend. It consists of four interconnected parts:</p>
 <ul>
-<li><code>Features</code>: responsible for app functionalities. </li>
-<li><code>Models</code>: represent storage objects, which can inherit from file systems or any database in <code>DATABASES</code>. </li>
-<li><code>Schemas</code>: represent <code>Models</code> sent through the API.</li>
-<li><code>Processors</code>: interact with objects created in models if needed.</li>
+<li><code>Features</code> : responsible for app functionalities. </li>
+<li><code>Models</code> : represent storage objects, which can inherit from file systems or any database in <code>DATABASES</code>. </li>
+<li><code>Schemas</code> : represent <code>Models</code> sent through the API.</li>
+<li><code>Processors</code> : interact with objects created in models if needed.</li>
 </ul>
+<h2 id="routers">Routers</h2>
+<p>This part manages the API paths. </p>
+<ul>
+<li><code>Networks</code> : contains all the crud functionalities and network features.</li>
+<li><code>Files</code> : contains any system file that can be accessed by the user.</li>
+</ul>
+<h2 id="databases">Databases</h2>
+<p>The app needs some databases to store the network data or models performance for example. Then, APIs to interact with these databeses are managed in this part of the app.</p>
+<ul>
+<li><code>PostgreSQL</code> : SQL database for storing relational data and data that needs to be modified recurrently or accessed easily.</li>
+</ul>
+<h2 id="view">View</h2>
+<p>👷 Work in progress...</p>
 
 
 
