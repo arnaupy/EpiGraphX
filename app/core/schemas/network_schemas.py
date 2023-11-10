@@ -9,7 +9,7 @@ Process FastAPI responses as schemas to SQLAlchemy database objects:
     |       
     +
 """
-from pydantic import BaseModel, field_validator, root_validator
+from pydantic import BaseModel, field_validator
 from datetime import datetime
 import validators
 

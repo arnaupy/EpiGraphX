@@ -21,7 +21,7 @@ from ..databases.postgresql import engine, get_db
 
 network_models.Base.metadata.create_all(bind = engine)
 
-router = APIRouter(prefix = "/networks", tags = ["networks"])
+router = APIRouter(prefix = "/networks", tags = ["Networks"])
 
 
 @router.post("/", response_model = network_schemas.Network)

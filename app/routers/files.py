@@ -13,7 +13,7 @@ from fastapi import APIRouter, UploadFile, File, HTTPException
 
 from ..core.processors import file_processor
 
-router = APIRouter(prefix = "/files", tags = ["files"])
+router = APIRouter(prefix = "/files", tags = ["Files"])
 
 
 @router.get("/")

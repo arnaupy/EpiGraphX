@@ -70,7 +70,7 @@ import numpy as np
 import validators
 
 from ..schemas import network_schemas
-from ..models import network_models
+from ..models import network_models, file_models
 from ..processors import file_processor
 from ..utils import database_utils
 from ..f2py.ReadNetwork import read_network as f2p2_scan_network
@@ -105,7 +105,7 @@ def pull_network(db: Session, network_id: str) -> network_models.Network:
     return db.query(network_models.Network).filter(network_models.Network.id == network_id).first()
     
     
-def scan_network(db: Session, network: network_models.Network, network_file = file_processor.NetworkFile) -> bool:
+def scan_network(db: Session, network: network_models.Network, network_file = file_models.NetworkFile) -> bool:
     """Scan the network from a 'txt' file"""
     
     # Since Fortran does not dynamically expand vector size, a maximum vector size must be selected.

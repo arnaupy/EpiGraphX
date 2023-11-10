@@ -14,9 +14,21 @@ from .routers import files, networks
 from .core.schemas import network_schemas
 from app import __version__
 
+
 # Instanciate FastAPI app
 app = FastAPI(
-    version = __version__
+    title = "EpiGraphX",
+    summary = "☣️ App to simulate Epidemics on Networks.",
+    version = __version__,
+    contact={
+        "name": "Arnau Perez",
+        "url": "https://www.linkedin.com/in/arnau-perez-perez/",
+        "email": "01arnauperez@gmail.com",
+    },
+    license_info={
+        "name": "MIT",
+        "url": "https://github.com/arnaupy/EpiGraphX/blob/main/LICENSE",
+    },
 )
 
 # Add routers
