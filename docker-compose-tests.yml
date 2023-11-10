@@ -23,7 +23,7 @@ services:
     volumes:
       - ./app:/app
       - ./tests:/tests
-  
+
     depends_on:
       - postgres-db-tests
 

@@ -43,8 +43,10 @@ down: __check
 	@docker network rm $(APP-DATABASE_NETWORK_NAME)
 
 test:
+	@docker compose -f $(DOCKER_COMPOSE_FILE_TESTS) rm -f
+	@docker compose -f $(DOCKER_COMPOSE_FILE_TESTS) build
+	@docker compose -f $(DOCKER_COMPOSE_FILE_TESTS) run --rm app_test
 	@docker-compose -f $(DOCKER_COMPOSE_FILE_TESTS) down -v
-	@docker compose -f $(DOCKER_COMPOSE_FILE_TESTS) up --abort-on-container-exit 
 
 
 __check:
