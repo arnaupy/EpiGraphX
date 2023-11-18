@@ -5,22 +5,22 @@ repo_name: arnaupy/EpiGraphX
 
 theme:
   name: material
-  logo: images/white_logo.png
-  favicon: images/black_logo.png
+  logo: assets/white_logo.png
+  favicon: assets/black_logo.png
 
   # Gihub icon and link to repository
   icon:
     repo: fontawesome/brands/github-alt
 
   palette:
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: red
-      accent: orange
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
+    # # Palette toggle for light mode
+    # - media: "(prefers-color-scheme: light)"
+    #   scheme: default
+    #   primary: green
+    #   accent: green
+    #   toggle:
+    #     icon: material/brightness-7
+    #     name: Switch to dark mode
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
@@ -41,6 +41,8 @@ nav:
       - Interact with the Backend: dev-guide/InteractBackend/InteractBackend.md
       - Fortran Modules: dev-guide/FortranModules/FortranModules.md
       - Networks Storage: dev-guide/Databases/NetworkStorage.md
+      - Makefile: dev-guide/Makefile.md
+      - Testing: dev-guide/Testing.md
       - Arquitecture: dev-guide/Architecture.md
       - Workflow: dev-guide/Workflow.md
 

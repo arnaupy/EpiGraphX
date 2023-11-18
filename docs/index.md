@@ -1,6 +1,6 @@
 # EpiGraphX
 <center>
-<img src=images/white_logo.png width="200">
+<img src=assets/white_logo.png width="200">
 </center>
 
 :biohazard: App to simulate Epidemics on Networks

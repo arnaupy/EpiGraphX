@@ -1,7 +1,7 @@
 # How is code structured?
 The app is structured with a specific number of layers to ensure that the code is `expandable` and `easily fixable` if necessary. For this reason, the project is divided into four different blocks that are interconnected.
 
-![Arquitecture diagram](../images/CodeArchitecture.png)
+![Arquitecture diagram](../assets/CodeArchitecture.png)
 
 ## Core
 This is the main piece of the code that manages the interaction between the database and backend. It consists of four interconnected parts:
