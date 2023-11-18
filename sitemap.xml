@@ -2,72 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/Contributing/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Architecture/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Workflow/</loc>
-         <lastmod>2023-11-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Code/WORKING/</loc>
-         <lastmod>2023-11-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Code/Core/Models/FileModels/</loc>
-         <lastmod>2023-11-09</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Code/Core/Models/NetworkModels/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Databases/NetworkStorage/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Features/CRUD/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/FortranModules/FortranModules/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/InteractBackend/InteractBackend/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/QuickStart/QuickStart/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/user-guide/GettingStarted/GettingStarted/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://arnaupy.github.io/EpiGraphX/user-guide/Installation/Installation/</loc>
-         <lastmod>2023-11-09</lastmod>
+         <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
