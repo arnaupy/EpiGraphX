@@ -8,24 +8,28 @@
       
       
       
-        <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/Features/CRUD/">
+        <link rel="canonical" href="https://arnaupy.github.io/EpiGraphX/dev-guide/Testing/">
       
       
+        <link rel="prev" href="../Makefile/">
       
       
-      <link rel="icon" href="../../../assets/black_logo.png">
+        <link rel="next" href="../Architecture/">
+      
+      
+      <link rel="icon" href="../../assets/black_logo.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.4">
     
     
       
-        <title>CRUD - EpiGraphX</title>
+        <title>Testing - EpiGraphX</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.bd3936ea.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bd3936ea.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -44,7 +48,7 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,6 +76,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#testing" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -84,9 +93,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="EpiGraphX" class="md-header__button md-logo" aria-label="EpiGraphX" data-md-component="logo">
+    <a href="../.." title="EpiGraphX" class="md-header__button md-logo" aria-label="EpiGraphX" data-md-component="logo">
       
-  <img src="../../../assets/white_logo.png" alt="logo">
+  <img src="../../assets/white_logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -103,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CRUD
+              Testing
             
           </span>
         </div>
@@ -203,9 +212,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="EpiGraphX" class="md-nav__button md-logo" aria-label="EpiGraphX" data-md-component="logo">
+    <a href="../.." title="EpiGraphX" class="md-nav__button md-logo" aria-label="EpiGraphX" data-md-component="logo">
       
-  <img src="../../../assets/white_logo.png" alt="logo">
+  <img src="../../assets/white_logo.png" alt="logo">
 
     </a>
     EpiGraphX
@@ -231,7 +240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -286,7 +295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../user-guide/Installation/Installation/" class="md-nav__link">
+      <a href="../../user-guide/Installation/Installation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -306,7 +315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../user-guide/GettingStarted/GettingStarted/" class="md-nav__link">
+      <a href="../../user-guide/GettingStarted/GettingStarted/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -331,18 +340,20 @@
       
   
   
+    
+  
   
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -356,7 +367,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Developer Guide
@@ -369,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../QuickStart/QuickStart/" class="md-nav__link">
+      <a href="../QuickStart/QuickStart/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -389,7 +400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../InteractBackend/InteractBackend/" class="md-nav__link">
+      <a href="../InteractBackend/InteractBackend/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -409,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../FortranModules/FortranModules/" class="md-nav__link">
+      <a href="../FortranModules/FortranModules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -429,7 +440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Databases/NetworkStorage/" class="md-nav__link">
+      <a href="../Databases/NetworkStorage/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -449,7 +460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Makefile/" class="md-nav__link">
+      <a href="../Makefile/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -467,9 +478,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Testing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -478,6 +498,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -489,7 +510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Architecture/" class="md-nav__link">
+      <a href="../Architecture/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -509,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Workflow/" class="md-nav__link">
+      <a href="../Workflow/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -536,7 +557,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Contributing/" class="md-nav__link">
+      <a href="../../Contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -566,6 +587,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -583,12 +606,10 @@
   
 
 
-  <h1>CRUD</h1>
-
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p><img alt="👷" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@14.1.2/assets/svg/1f477.svg" title=":construction_worker:" /> Work in progress...</p>
-</div>
+<h1 id="testing">Testing</h1>
+<p>As well as the app, test are run in docker containers. In these case, volumes are deleted once the containers are run. To test it is used the <a href="https://docs.pytest.org/en/7.4.x/contents.html">pytest</a> tool. You can see in the <a href="../Makefile/">Makefile</a> the following comand to run the tests:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make<span class="w"> </span>tests
+</span></code></pre></div>
 
 
 
@@ -627,12 +648,12 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.94c44541.min.js"></script>
+      <script src="../../assets/javascripts/bundle.94c44541.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       

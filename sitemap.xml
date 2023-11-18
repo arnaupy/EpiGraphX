@@ -16,6 +16,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Makefile/</loc>
+         <lastmod>2023-11-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Testing/</loc>
+         <lastmod>2023-11-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://arnaupy.github.io/EpiGraphX/dev-guide/Workflow/</loc>
          <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
