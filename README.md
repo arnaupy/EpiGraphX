@@ -1,12 +1,21 @@
-# EpiGraphX
+<h1 align="center"> EpiGraphX  </h1>
+
+<center>
+
 [![Python](https://img.shields.io/badge/Python-yellow?style=for-the-badge&logo=python&logoColor=white&labelColor=101010)](https://python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-289475?style=for-the-badge&logo=FastAPI&logoColor=white&labelColor=101010)](https://fastapi.tiangolo.com)
 [![Docker](https://img.shields.io/badge/Docker-blue?style=for-the-badge&logo=docker&logoColor=white&labelColor=101010)](https://www.docker.com/)
 [![PostgreSQL](https://img.shields.io/badge/SQLAlchemy-darkred?style=for-the-badge&logo=sqlalchemy&logoColor=white&labelColor=101010)](https://www.sqlalchemy.org/)
 [![pydantic](https://img.shields.io/badge/pydantic-pink?style=for-the-badge&logo=pydantic&logoColor=white&labelColor=101010)](https://docs.pydantic.dev/latest/)
+[![fortran](https://img.shields.io/badge/fortran-734f96?style=for-the-badge&logo=fortran&logoColor=white&labelColor=101010)](https://docs.pydantic.dev/latest/)
+</center>
+
+<p align="center">
+  <img src="docs/assets/white_logo.png", width="40%" />
+</p>
 
 ---
-:biohazard: App to simulate Epidemics on Networks.
+:star: App to simulate Epidemics on Networks.
 
 Documentation -> https://arnaupy.github.io/EpiGraphX/
 
