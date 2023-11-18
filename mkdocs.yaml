@@ -40,14 +40,7 @@ nav:
       - Quick Start: dev-guide/QuickStart/QuickStart.md
       - Interact with the Backend: dev-guide/InteractBackend/InteractBackend.md
       - Fortran Modules: dev-guide/FortranModules/FortranModules.md
-      - Databases:
-          - Networks Storage: dev-guide/Databases/NetworkStorage.md
-      - Code:
-          - dev-guide/Code/WORKING.md
-          - Core:
-              - Models:
-                  - dev-guide/Code/Core/Models/NetworkModels.md
-                  - dev-guide/Code/Core/Models/FileModels.md
+      - Networks Storage: dev-guide/Databases/NetworkStorage.md
       - Arquitecture: dev-guide/Architecture.md
       - Workflow: dev-guide/Workflow.md
 
