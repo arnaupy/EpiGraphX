@@ -5,13 +5,15 @@ Currently, it's only implemeted the `CRUD` feature soo we'll see all the process
 
 Make sure you run the following comands:
 <div class="annotate" markdown>
+
 ```
 make create (1)
 make run
 ``` 
 </div>
 
-1.  ❗You have to run this comands in case you din't run it before to create containers.
+1. You have to run this comands in case you din't run it before to create containers.
+
 
 
 !!! tip

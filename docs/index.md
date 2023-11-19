@@ -1,10 +1,9 @@
 # EpiGraphX
 <center>
 <img src=assets/white_logo.png width="200">
+<h2 align="center"> App to simulate Epidemics on Networks </h2>
 </center>
 
-:biohazard: App to simulate Epidemics on Networks
----
 ---
 Documentation -> <https://arnaupy.github.io/EpiGraphX>{:target="_blank"}
 
@@ -23,7 +22,7 @@ Unfortunately, I'm currently working on the app `backend` so there is no user in
 However, to see the progress of the backend, I strongly recomend to use the `FastAPI docs` tool to interact with the backend more visually :star_struck:.
 
 ## Features
-### 🔄 CRUD
+### CRUD
 At the moment, the app backend is only capable of `creating` & `reading` & `updating` & `deleting` networks. 
 
 ## Contributing
