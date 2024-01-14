@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from app.main import app
+from epigraphx.main import app
 
 
 client = TestClient(app)
@@ -12,7 +12,7 @@ PRIVATE_EDGES = 100000
 PRIVATE_NETWORK_FILE = "UniformNetwork.txt"
 UPDATED_PRIVATE_NETWORK_FILE = "OtherUniformNetwork.txt"
 PRIVATE_FILE_SIZE = 2500000
-NUMPY_INT_TYPE = "int32"
+NUMPY_INT_TYPE = "int64"
 
 def test_create_private_network():
     

@@ -1,0 +1,26 @@
+# --------------------------------------------------------
+# Config file used to build cpp modules called from python
+# --------------------------------------------------------
+
+# Name of the directory where all the modules will be stored
+package_name: cpp
+# Directory name where all the .cpp files are stored
+source_directory: src
+compiler: g++
+arguments: 
+  - -std=c++2a 
+  - -shared 
+  - -fPIC
+includes_dir: 
+  - -I ./include/ 
+  - -I ./pybind11/include/
+  - "`python3 -m pybind11 --includes`"
+libraries: 
+  - -lSDL2 
+  - -ldl 
+  - "`python3-config --ldflags`"
+# Structure of the entire package.
+# The name of each submodules file must be the same as the name specified in pybind 
+modules:
+  graph_tools:
+    - readNetwork

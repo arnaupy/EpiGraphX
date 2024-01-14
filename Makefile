@@ -1,8 +1,6 @@
-# Docker compose file name
-DOCKER_COMPOSE_FILE = docker-compose-dev.yml
-DOCKER_COMPOSE_FILE_TESTS = docker-compose-tests.yml
-DATABASE_VOLUME_NAME = postgres-data
-APP-DATABASE_NETWORK_NAME = app-data
+# Docker compose file namee
+DEVELOP_DOCKER_COMPOSE_FILE = develop.yml
+TEST_DOCKER_COMPOSE_FILE = test.yml
 
 # Comand after make
 COMMAND := $(firstword $(MAKECMDGOALS))
@@ -14,40 +12,40 @@ else
 	CHECK_MESSAGE = Do you want to delete containers, images and volumes in "$(DOCKER_COMPOSE_FILE)" ?
 endif
 
+all: create 
+
 # Make file to manage app related comands, documentation and testing
 help:
 	@echo "create  -> run the docker compose comand to create the project containers, volumes and networks"
 	@echo "devrun  -> start the existing server with terminal messages"
 	@echo "run     -> start the existing server in detached mode"
 	@echo "stop    -> stop the server after the run command"
-	@echo "down    -> remove all the containers, images and volums"
+	@echo "down    -> remove all the containers"
 	@echo "test    -> create the containers to test the app and test it"
 	 
 create:
-	@docker volume create $(DATABASE_VOLUME_NAME)
-	@docker network create $(APP-DATABASE_NETWORK_NAME)
-	@docker compose -f $(DOCKER_COMPOSE_FILE) create
+	@docker compose -f $(DEVELOP_DOCKER_COMPOSE_FILE) create --build
 
 devrun:
-	@docker compose -f $(DOCKER_COMPOSE_FILE) up 
+	@docker compose -f $(DEVELOP_DOCKER_COMPOSE_FILE) up 
 
 run:
-	@docker compose -f $(DOCKER_COMPOSE_FILE) up -d
+	@docker compose -f $(DEVELOP_DOCKER_COMPOSE_FILE) up -d 
 
-stop: __check
-	@docker compose -f $(DOCKER_COMPOSE_FILE) stop
+stop: 
+	@docker compose -f $(DEVELOP_DOCKER_COMPOSE_FILE) stop
 
-down: __check
-	@docker compose -f $(DOCKER_COMPOSE_FILE) down 
-	@docker volume rm $(DATABASE_VOLUME_NAME)
-	@docker network rm $(APP-DATABASE_NETWORK_NAME)
+down: 
+	@docker compose -f $(DEVELOP_DOCKER_COMPOSE_FILE) down 
 
-test:
-	@docker compose -f $(DOCKER_COMPOSE_FILE_TESTS) rm -f
-	@docker compose -f $(DOCKER_COMPOSE_FILE_TESTS) build
-	@docker compose -f $(DOCKER_COMPOSE_FILE_TESTS) run --rm app_test
-	@docker-compose -f $(DOCKER_COMPOSE_FILE_TESTS) down -v
+test: create-tests run-tests
 
+create-tests:
+	@docker compose -f $(TEST_DOCKER_COMPOSE_FILE) create --build 
+
+run-tests:
+	@docker compose -f $(TEST_DOCKER_COMPOSE_FILE) up --exit-code-from app-test || true
+	@docker-compose -f $(TEST_DOCKER_COMPOSE_FILE) down -v --remove-orphans
 
 __check:
 	@echo "$(CHECK_MESSAGE) [y/n] " && read ans && [ $${ans:-y} = y ] 

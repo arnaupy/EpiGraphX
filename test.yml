@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  # Defining app test image
+  app-test:
+    container_name: channel-app-test
+    build:
+      context: .
+      dockerfile: docker/test/python/Dockerfile
+    # Path to envionment variables to store int the container
+    env_file:
+      - .envs/.test/postgres.env
+    ports:
+      - 9080:80
+    depends_on:
+      - postgres-test
+    # Command to run the api
+    command: pytest 
+
+  # Defining the postgres database image for testing
+  postgres-test:
+    container_name: channel-postgres-test
+    build:
+      context: .
+      dockerfile: docker/develop/postgres/Dockerfile
+    ports:
+      - 6432:5432
+    restart: always
+    privileged: true

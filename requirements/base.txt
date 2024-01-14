@@ -1,0 +1,9 @@
+fastapi
+python-multipart
+uvicorn
+SQLAlchemy
+# psycopg2
+psycopg2-binary
+pydantic
+numpy
+validators

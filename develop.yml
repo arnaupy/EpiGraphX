@@ -1,0 +1,38 @@
+version: "3.9"
+
+volumes:
+  postgres-develop-data:
+
+services:
+  # Defining app image
+  app-develop:
+    container_name: channel-app-develop
+    build:
+      context: .
+      dockerfile: docker/develop/python/Dockerfile
+    # Path to envionment variables to store int the container
+    env_file:
+      - .envs/.develop/postgres.env
+    ports:
+      - 8080:80
+    volumes:
+      - ./epigraphx:/epigraphx
+    depends_on:
+      - postgres-develop
+    # Command to run the api
+    command: uvicorn epigraphx.main:app --host 0.0.0.0 --port 80 --reload
+
+  # Defining the postgres database image
+  postgres-develop:
+    container_name: channel-postgres-develop
+    build:
+      context: .
+      dockerfile: docker/develop/postgres/Dockerfile
+    restart: always
+    privileged: true
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-develop-data:/var/lib/postgresql/data
+
+    
