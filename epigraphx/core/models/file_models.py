@@ -72,18 +72,12 @@ File classes:
 """
 import os
 from pydantic import BaseModel, model_validator
+from minio import Minio
 from typing import ClassVar
 
-from ...databases import files_system
+from ..exceptions import InvalidFileExtension
 
-            
-class InvalidFileExtension(Exception):
-    """Raises when the file name missmatches the class extention"""  
-    
-class FileNotFound(Exception):
-    """Raises when file can't be found"""  
-      
-    
+
 class FileBaseMeta(type(BaseModel)):
     def __new__(cls, name, bases, namespace, **kwargs):
         # Check if it's the FileBase class itself
@@ -92,40 +86,56 @@ class FileBaseMeta(type(BaseModel)):
 
         # Check if the subclass has 'directory' and 'extensions' attributes
         if "directory" not in namespace or "extensions" not in namespace:
-            raise TypeError(f"{name} must have 'directory' and 'extensions' attributes.")
+            raise TypeError(
+                f"{name} must have 'directory' and 'extensions' attributes."
+            )
 
         return super().__new__(cls, name, bases, namespace, **kwargs)
 
-class FileBase(BaseModel, metaclass = FileBaseMeta):
+
+class FileBase(BaseModel, metaclass=FileBaseMeta):
     """Raw file class to mount different file extentions"""
-    
+
     filename: str
-    
+    file_data: bytes
+
     @classmethod
     def get_filepath(cls, filename: str) -> str:
         return os.path.join(cls.directory, filename)
-    
+
     @property
     def filepath(self) -> str:
         return os.path.join(self.directory, self.filename)
-    
+
     def _exists(self) -> bool:
         return os.path.isfile(self.filepath)
 
-    
-    @model_validator(mode = "after")
+    @model_validator(mode="after")
     def filename_matches_extensions_and_exists(self):
-
         filename_extension = self.filename.split(".")[-1]
         if filename_extension not in self.extensions:
-            raise InvalidFileExtension(f"'{self.__class__.__name__}' only accepts file extensions in {self.extensions}")
-        
-        if not self._exists():
-            raise FileNotFound(f"'{self.filename}' is not stored in the system")
-    
-    
+            raise InvalidFileExtension(
+                f"'{self.__class__.__name__}' only accepts file extensions in {self.extensions}"
+            )
+
+    @classmethod
+    def create_all(cls, minio_client: Minio, bucket_name: str) -> None:
+        # Create the root bucket if not exists
+        if not minio_client.bucket_exists(bucket_name):
+            minio_client.make_bucket(bucket_name)
+
+        # # Create the directories associated with the subclasses of 'FileBase'
+        # for subclass in cls.__subclasses__():
+        #     try:
+        #         # Create a dummy object inside the directory to make it appear in the Minio console
+        #         minio_client.put_object(bucket_name, f"{subclass.directory}/.keep", "", 0, content_type="application/octet-stream")
+        #         print(f"Directory '{subclass.directory}' created successfully.")
+        #     except InvalidResponseError as err:
+        #         print(f"Error creating directory: {err}")
+
+
 class NetworkFile(FileBase):
     """Network file class"""
-    
-    directory: ClassVar[str] = files_system.NETWORK_FILE["directory"]
-    extensions: ClassVar[list[str]] = files_system.NETWORK_FILE["extensions"]
+
+    directory: ClassVar[str] = "networks"
+    extensions: ClassVar[list[str]] = ["txt", "edges", "csv"]

@@ -4,3 +4,8 @@ mkdocs-material
 mkdocs-markdownextradata-plugin
 mkdocs-redirects
 
+# ---------------| Develop |---------------
+-r requirements/develop.txt
+
+black
+

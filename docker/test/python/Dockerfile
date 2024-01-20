@@ -19,7 +19,6 @@ COPY ./README.md .
 COPY ./cpp ./cpp 
 COPY ./epigraphx ./epigraphx
 COPY ./setup.py . 
-COPY ./loggin.py .
 
 RUN python3 setup.py bdist_wheel
 

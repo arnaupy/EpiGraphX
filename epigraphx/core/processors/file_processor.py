@@ -62,18 +62,15 @@ Process files in the system:
     |
     +
 """
-import os
 from fastapi import UploadFile
+from minio.error import InvalidResponseError
 from typing import Union, Type
-import shutil
-
-from ...config import system
 from ..models.file_models import NetworkFile
-from ...databases import files_system
+from ...databases.miniodb import MinioSession
 
 FileClass = Type[NetworkFile]
 StoredFile = NetworkFile
-    
+
 
 class FileProcessor:
     """Base file processor class"""
@@ -81,53 +78,63 @@ class FileProcessor:
 
 class UploadFileProcessor(FileProcessor):
     """File processor for local uploads to deal with storing, pulling and deleating functionalities"""
-    
-    def __init__(self, file_class: FileClass) -> None:
-        self.file_class = file_class
-        
-    def store(self, uploaded_file: UploadFile) -> dict[str, int]:
-        
-        save_path = self.file_class.get_filepath(uploaded_file.filename)
-        with open(save_path, "wb") as dest_file:
-            shutil.copyfileobj(uploaded_file.file, dest_file)
-            
-        return {"filename": uploaded_file.filename, "size": uploaded_file.size}
-    
-    def pull(self, filename: str) -> StoredFile | None:
 
+    def __init__(self, file_class: FileClass, minio_db: MinioSession) -> None:
+        self.file_class = file_class
+        self.minio_db = minio_db
+
+    def store(self, uploaded_file: UploadFile) -> dict[str, int]:
+        save_path = self.file_class.get_filepath(uploaded_file.filename)
+        self.minio_db.minio_client.put_object(
+            self.minio_db.bucket_name,
+            save_path,
+            uploaded_file.file,
+            length=uploaded_file.size,
+        )
+
+        return {"filename": uploaded_file.filename, "size": uploaded_file.size}
+
+    def pull(self, filename: str) -> StoredFile | None:
         try:
-            return self.file_class(filename = filename)
+            result = self.minio_db.minio_client.get_object(
+                self.minio_db.bucket_name, self.file_class.get_filepath(filename)
+            )
+            return self.file_class(filename=filename, file_data=result.read())
         except:
             return None
-        
+
     def delete(self, file: StoredFile) -> bool:
-        
-        os.remove(file.filepath)
+        self.minio_db.minio_client.remove_object(
+            self.minio_db.bucket_name, file.filepath
+        )
         return True
-    
-    
+
+
 class RequestFileProcessor(FileProcessor):
     pass
-    
-    
+
+
 Processor = Union[UploadFileProcessor, RequestFileProcessor]
-def get_file_processor(uploaded: bool, file_class: FileClass) -> Processor:
+
+
+def get_file_processor(
+    uploaded: bool, file_class: FileClass, minio_db: MinioSession
+) -> Processor:
     """Returns an instance of the correponding file processor"""
-    
+
     if not uploaded:
         raise NotImplementedError
-    
-    return UploadFileProcessor(file_class)
-    
-    
-def get_files() -> dict[str,list[str]]:
-    """Returns all the files in the diferent directories"""
-    
-    return {dirpath: filenames for dirpath, _, filenames in os.walk(files_system.ROOT)}
- 
 
-        
-        
-        
-        
-        
+    return UploadFileProcessor(file_class, minio_db)
+
+
+def get_files(minio_db: MinioSession) -> list:
+    """Returns all the files in the diferent directories"""
+    try:
+        objects = minio_db.minio_client.list_objects(
+            minio_db.bucket_name, recursive=True
+        )
+        return [obj.object_name for obj in objects]
+
+    except InvalidResponseError as err:
+        print(f"Error listing objects: {err}")

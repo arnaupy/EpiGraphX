@@ -1,10 +1,9 @@
-# --------------------------------------------------------
-# Config file used to build cpp modules called from python
-# --------------------------------------------------------
+# ----------------------------------------------------------------
+# | Config files used to specify how to compiled cpp files to    | 
+# | called by python scripts                                     |
+# ----------------------------------------------------------------
 
-# Name of the directory where all the modules will be stored
 package_name: cpp
-# Directory name where all the .cpp files are stored
 source_directory: src
 compiler: g++
 arguments: 
@@ -19,8 +18,11 @@ libraries:
   - -lSDL2 
   - -ldl 
   - "`python3-config --ldflags`"
-# Structure of the entire package.
-# The name of each submodules file must be the same as the name specified in pybind 
+
+# ---------------------| Package Structure |----------------------
+# | The name of each submodules file must match the correponding | 
+# | name specified in head cpp file by the pybind extension      |
+# ----------------------------------------------------------------
 modules:
   graph_tools:
     - readNetwork

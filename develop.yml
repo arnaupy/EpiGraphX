@@ -2,28 +2,27 @@ version: "3.9"
 
 volumes:
   postgres-develop-data:
+  minio-data:
 
 services:
-  # Defining app image
-  app-develop:
+  app:
     container_name: channel-app-develop
     build:
       context: .
       dockerfile: docker/develop/python/Dockerfile
-    # Path to envionment variables to store int the container
     env_file:
       - .envs/.develop/postgres.env
+      - .envs/.develop/minio.env
     ports:
       - 8080:80
     volumes:
       - ./epigraphx:/epigraphx
     depends_on:
-      - postgres-develop
-    # Command to run the api
+      - postgres
+      - minio
     command: uvicorn epigraphx.main:app --host 0.0.0.0 --port 80 --reload
 
-  # Defining the postgres database image
-  postgres-develop:
+  postgres:
     container_name: channel-postgres-develop
     build:
       context: .
@@ -34,5 +33,19 @@ services:
       - 5432:5432
     volumes:
       - postgres-develop-data:/var/lib/postgresql/data
+
+  minio:
+    container_name: channel-minio-develop
+    image: minio/minio
+    restart: always
+    ports:
+      - 9000:9000
+    environment:
+      - MINIO_ROOT_USER=myrootuser
+      - MINIO_ROOT_PASSWORD=myrootpassword
+    volumes:
+      - minio-data:/data
+
+    command: server /data
 
     
