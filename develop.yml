@@ -1,0 +1,52 @@
+version: "3.9"
+
+volumes:
+  postgres-develop-data:
+  minio-data:
+
+services:
+  app:
+    container_name: channel-app-develop
+    build:
+      context: .
+      dockerfile: docker/develop/python/Dockerfile
+    env_file:
+      - .envs/.env
+      - .envs/.develop/postgres.env
+      - .envs/.develop/minio.env
+    ports:
+      - 8080:80
+    volumes:
+      - ./app:/app
+    depends_on:
+      - postgres
+      - minio
+    command: uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
+
+  postgres:
+    container_name: channel-postgres-develop
+    build:
+      context: .
+      dockerfile: docker/develop/postgres/Dockerfile
+    restart: always
+    privileged: true
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres-develop-data:/var/lib/postgresql/data
+
+  minio:
+    container_name: channel-minio-develop
+    build:
+      context: .
+      dockerfile: docker/develop/minio/Dockerfile
+    restart: always
+    privileged: true
+    ports:
+      - 9000:9000
+    volumes:
+      - minio-data:/data
+
+    command: server /data
+
+    

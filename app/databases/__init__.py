@@ -11,5 +11,6 @@ Connection Manager to the database
 
     MODULE CONTENTS:
     |   - postgresql.py
+    |   - miniodb.py
     +
 """

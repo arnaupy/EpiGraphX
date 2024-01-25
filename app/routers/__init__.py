@@ -9,5 +9,6 @@ API routers
     MODULE CONTENTS:
     |   - files.py
     |   - networks.py
+    |   - logs.py
     +
 """

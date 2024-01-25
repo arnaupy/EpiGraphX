@@ -1,0 +1,9 @@
+{
+    "name": "EpiGraphX",
+    "description": "App to simulate Epidemics on Networks",
+    "author": "Arnau Perez",
+    "author_email": "01arnauperez@gmail.com",
+    "contact_url": "https://www.linkedin.com/in/arnau-perez-perez/",
+    "version": "0.0.1",
+    "license": "MIT"
+}

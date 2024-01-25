@@ -3,15 +3,17 @@ Here you'll see a short tutorial to get to know how the backend works.
 
 Currently, it's only implemeted the `CRUD` feature soo we'll see all the process to follow to get a network registered in the system and how to interact with it.
 
-Make sure you run the following comands:
+Make sure you have your Docker engine working before running the following comands:
 <div class="annotate" markdown>
+
 ```
-make create (1)
-make run
+make (1)
+make devrun
 ``` 
 </div>
 
-1.  ❗You have to run this comands in case you din't run it before to create containers.
+1. Only run this comand ones. This comand create the app containers. Run `make help` for further information.
+
 
 
 !!! tip
@@ -22,8 +24,8 @@ Use the `Create Network` option and send a `JSON` file, such as:
 === "FastAPI docs"
     ```json
     {
-      "label": "EmailEnron",
-      "origin": "email-enron-large.txt"
+      "label": "Tutorial Network",
+      "origin": "UniformNetwork.txt"
     }
     ```
 === "Terminal"
@@ -33,22 +35,22 @@ Use the `Create Network` option and send a `JSON` file, such as:
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
-      "label": "EmailEnron",
-      "origin": "email-enron-large.txt"
+      "label": "Tutorial Network",
+      "origin": "UniformNetwork.txt"
     }'
     ```
 
 Make sure you receive the following response with a different **id**:
 ```json
 {
-  "label": "EmailEnron",
+  "label": "Tutorial Network",
+  "origin": "UniformNetwork.txt",
   "is_private": true,
-  "origin": "email-enron-large.txt",
-  "id": "jsl3b6wsqfmmq9v41bbfun88mykhuh",
+  "id": "04777838-32b1-4332-8a58-1e303ac2abb9",
   "nodes": null,
   "edges": null,
   "is_scanned": false,
-  "last_update": "2023-10-03T10:47:57",
+  "last_update": "2024-01-25T01:47:51",
   "last_scan": null,
   "time_to_scan": null,
   "degree": null,
@@ -59,17 +61,11 @@ Make sure you receive the following response with a different **id**:
 ```
 
 
-## Read network
-First, ensure that the network file named in `origin` when creating the network is stored in the system. To do so, you have to upload the network file `email-enron-large.txt` you find in [NetworkFiles](https://github.com/arnaupy/EpiGraphX/tree/develop/NetworkFiles) directory using the `Upload Network File` function. The response body:
+## Scan network
+First, ensure that the network file named in `origin` when creating the network is stored in the system. To do so, you have to upload the network file `UniformNetwork.txt` you find in [NetworkExample](https://github.com/arnaupy/EpiGraphX/tree/main/tests/) directory using the `Upload Network File` function.
+
 === "FastAPI docs"
-    ```json
-    {
-      "uploaded_file": {
-        "filename": "email-enron-large.txt",
-        "size": 1804419
-      }
-    }
-    ```
+    Simply follow the api documentation instructions.
 
 === "Terminal"
     <div class="annotate" markdown>
@@ -78,24 +74,49 @@ First, ensure that the network file named in `origin` when creating the network 
       'http://localhost:8080/files/networks' \
       -H 'accept: application/json' \
       -H 'Content-Type: multipart/form-data' \
-      -F 'file=@NetworkFiles/UniformNetwork.txt;type=text/plain' # (1)! 
+      -F 'file=@UniformNetwork.txt;type=text/plain' # (1)! 
     ```
     </div>
 
-    1. ❗ In case you are running the request to the API on the projects' root directory.
+    1. ❗ Make sure to specify the correct file path. 
 
-Once the network is `registered` in the system and the `network file` is abailable, you can read it by adding the registered **network id** as a parameter to the `Read Network` function. The response will be:
+The response body:
+```json
+{
+  "uploaded_file": {
+    "filename": "UniformNetwork.txt",
+    "size": 2500000
+  }
+}
+```
+
+Once the network is `registered` in the system and the `network file` is abailable, process by scanning the network.
+
+=== "FastAPI docs"
+    Add the registered **network id** as a parameter to the `Scan Network` function.
+
+=== "Terminal"
+    <div class="annotate" markdown>
+    ```bash
+    curl -X 'PATCH' \
+    'http://localhost:8080/networks/04777838-32b1-4332-8a58-1e303ac2abb9' \ # (1)!
+    -H 'accept: application/json'
+    ```
+    </div>
+
+    1. Place the corresponding network id. 
+
+The response body:
 ```json
 {
   "scanned": true
 }
 ```
 
-
 ## Get network
 Now, attempt to retrieve the network table information using the `Get Network` if you wrote down the network id or `Get Networks` in case you forgot to do so:
 
-### By the network id
+### Listing networks
 === "Fast API docs"
     Simply press the execute comand leaving `skip` to 0 and the `limit` to 100 as default.
 
@@ -106,7 +127,7 @@ Now, attempt to retrieve the network table information using the `Get Network` i
       -H 'accept: application/json'
     ```
 
-### By list of network
+### Get by network id
 === "Fast API docs"
     Simply press execute the comand introducing the network `id`.
 
@@ -120,16 +141,16 @@ Now, attempt to retrieve the network table information using the `Get Network` i
 If you successfully execute this request, you will receive:
 ```json
 {
-  "label": "EmailEnron",
+  "label": "Tutorial Network",
+  "origin": "UniformNetwork.txt",
   "is_private": true,
-  "origin": "email-enron-large.txt",
-  "id": "jsl3b6wsqfmmq9v41bbfun88mykhuh",
-  "nodes": 33696,
-  "edges": 180811,
+  "id": "04777838-32b1-4332-8a58-1e303ac2abb9",
+  "nodes": 10000,
+  "edges": 100000,
   "is_scanned": true,
-  "last_update": "2023-10-03T10:58:08",
-  "last_scan": "2023-10-03T10:58:08",
-  "time_to_scan": "1.246"
+  "last_update": "2024-01-25T01:59:36",
+  "last_scan": "2024-01-25T01:59:36",
+  "time_to_scan": "0.229"
 }
 ```
 
@@ -150,7 +171,7 @@ If you entered an incorrect `origin` or wish to modify the `label`, use the `Upd
 === "Terminal"
     ```bash
     curl -X 'PUT' \
-      'http://localhost:8080/networks/jsl3b6wsqfmmq9v41bbfun88mykhuh' \
+      'http://localhost:8080/networks/04777838-32b1-4332-8a58-1e303ac2abb9' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
@@ -166,8 +187,8 @@ If you don't add a label, it won't be modified, but if you want to update the or
 ```json
 {
   "updates": {
-    "label": "EmailEnron -> othername",
-    "origin": "email-enron-large.txt -> otherfile.txt"
+    "label": "Tutorial Network -> othername",
+    "origin": "UniformNetwork.txt -> otherfile.txt"
   }
 }
 ```
@@ -182,7 +203,7 @@ Finally, you can try to delete the network using the `Delete Network` function.
 === "Terminal"
     ```bash
     curl -X 'DELETE' \
-      'http://localhost:8080/networks/jsl3b6wsqfmmq9v41bbfun88mykhuh' \
+      'http://localhost:8080/networks/04777838-32b1-4332-8a58-1e303ac2abb9' \
       -H 'accept: application/json'
     ```
 

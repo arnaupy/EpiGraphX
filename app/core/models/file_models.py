@@ -1,140 +1,57 @@
 """
-File classes:
+TODO
 
     NAME -> file_models.py
 
     DESCRIPTION -> TODO
-    
-    CLASSES: 
-    |
-    |   * FileExtension -> Enums file extensions
-    |       
-    |       attributes: 
-    |           - TXT(str) = ".txt": text file extention 
-    |
-    |       methodes: 
-    |           - get(@classmethod) -> get the corresponding attribute by its value
-    |
-    |               inputs:
-    |                   - value(str): class value 
-    |                
-    |               outputs -> (Directories): class attribute 
-    |                
-    |               ex -> in: value = ".txt" | out: Directories.TXT
-    |
-    |
-    |   * Directories -> Enums system file directories
-    |       
-    |       attributes: 
-    |           - DEAFULT(None) = None: default directory to store files is the root
-    |           - NETWORK(str) = "networks": directory to store network files
-    |
-    |       methodes: 
-    |           + FileExtension method
-    |
-    |
-    |   * FileBase(BaseModel) -> Pydantic base class for any kind of file
-    |
-    |       attributes:
-    |           - name(str): file name
-    |           - directory(Directories) = Directories.DEFAULT: file directory. Default is the root    
-    |       
-    |       methods:
-    |           - name_match_extension_and_exists(@model_validator) -> validates that the `name` provided 
-    |                                                                  matches the `extension` and the file exists
-    |           - path(@property) -> computes the full file directory from root
-    |
-    |               inputs: self 
-    |                   
-    |               outputs -> (str): file path from root
-    | 
-    |
-    |   * TextFile(FileBase) -> Base class for text files with extention `.txt`
-    |
-    |       attributes:
-    |           - extension(FileExtension) = FileExtension.TXT: text file extension
-    |           + FileBase attributes
-    |
-    |       methods:
-    |           + FileBase methods
-    | 
-    |
-    |   * NetworkFile(TextFile) -> Network file class
-    |
-    |       attributes:
-    |           - directory(Directories) = Directories.NETWORKS: file directory 
-    |           + TextFile attributes
-    |
-    |       methods:
-    |           + TextFile methods
-    |
-    +
 """
-from pydantic import BaseModel, model_validator
-from enum import Enum
 import os
+from pydantic import BaseModel
+from minio import Minio
+from typing import ClassVar
 
-from ...config import config
-from ..utils import file_utils
 
-class FileExtensions(Enum):
-    TXT = ".txt"
+class FileBaseMeta(type(BaseModel)):
+    def __new__(cls, name, bases, namespace, **kwargs):
+        # Check if it's the FileBase class itself
+        if name == "FileBase":
+            return super().__new__(cls, name, bases, namespace, **kwargs)
 
-    @classmethod
-    def get(cls, value: str):
-        for extension in cls:
-            if extension.value == value:
-                return extension
+        # Check if the subclass has 'directory' and 'extensions' attributes
+        if "directory" not in namespace or "extensions" not in namespace:
+            raise TypeError(
+                f"{name} must have 'directory' and 'extensions' attributes."
+            )
 
-class Dirnames(Enum):
-    NETWORKS = "networks"
+        return super().__new__(cls, name, bases, namespace, **kwargs)
 
-    @classmethod
-    def get(cls, value: str):
-        for extension in cls:
-            if extension.value == value:
-                return extension
-            
-            
-class InvalidFileExtension(Exception):
-    """Raises when the file name missmatches the class extention"""  
-    
-class FileNotFound(Exception):
-    """Raises when file can't be found"""  
-      
 
-class FileBase(BaseModel):
+class FileBase(BaseModel, metaclass=FileBaseMeta):
     """Raw file class to mount different file extentions"""
-    
-    name: str
-    directory: str = config.ROOT
-    
-    @model_validator(mode = "after")
-    def name_match_extension_and_exists(cls, values):
-        """Check that the file name extension matches extension class attribute and exists"""
-        
-        if values.name[-len(values.extension.value):] != values.extension.value:
-            raise InvalidFileExtension(f"File provided should be a `{values.extension.value}` extension.")
-    
-        file_path = file_utils.get_path(values.directory, values.name)
-        if not os.path.isfile(file_path):
-            raise FileNotFound(f"File {file_path} is not stored in the system")
-        
-        return values
-    
+
+    filename: str
+    file: bytes
+
+    @classmethod
+    def get_filepath(cls, filename: str) -> str:
+        return os.path.join(cls.directory, filename)
+
     @property
-    def path(self) -> str:
-        """Get full path from base directory"""
-        
-        return file_utils.get_path(self.directory, self.name)
-    
-class TextFile(FileBase):
-    """Text file class"""
-    
-    extension: FileExtensions = FileExtensions.TXT
-    directory: str = config.ROOT
-    
-class NetworkFile(TextFile):
+    def filepath(self) -> str:
+        return os.path.join(self.directory, self.filename)
+
+    def _exists(self) -> bool:
+        return os.path.isfile(self.filepath)
+
+    @classmethod
+    def create_all(cls, minio_client: Minio, bucket_name: str) -> None:
+        # Create the root bucket if not exists
+        if not minio_client.bucket_exists(bucket_name):
+            minio_client.make_bucket(bucket_name)
+
+
+class NetworkFile(FileBase):
     """Network file class"""
-    
-    directory: str = config.DIRECTORIES[Dirnames.NETWORKS.value]
+
+    directory: ClassVar[str] = "networks"
+    extensions: ClassVar[list[str]] = [".txt", ".edges", ".csv"]

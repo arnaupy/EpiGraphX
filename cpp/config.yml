@@ -1,0 +1,28 @@
+# ----------------------------------------------------------------
+# | Config files used to specify how to compiled cpp files to    | 
+# | called by python scripts                                     |
+# ----------------------------------------------------------------
+
+package_name: cpp
+source_directory: src
+compiler: g++
+arguments: 
+  - -std=c++2a 
+  - -shared 
+  - -fPIC
+includes_dir: 
+  - -I ./include/ 
+  - -I ./pybind11/include/
+  - "`python3 -m pybind11 --includes`"
+libraries: 
+  - -lSDL2 
+  - -ldl 
+  - "`python3-config --ldflags`"
+
+# ---------------------| Package Structure |----------------------
+# | The name of each submodules file must match the correponding | 
+# | name specified in head cpp file by the pybind extension      |
+# ----------------------------------------------------------------
+modules:
+  graph_tools:
+    - readNetwork

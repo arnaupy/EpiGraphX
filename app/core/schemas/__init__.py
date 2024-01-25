@@ -1,12 +1,11 @@
 """
-This module defines objects to be sent through the API 
+TODO
 
     NAME -> schemas
 
     DESCRIPTION -> TODO
     
     MODULE CONTENTS:
-    |
-    |   * network_schemas.py
+    |   - network_schemas.py
     +
 """

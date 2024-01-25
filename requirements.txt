@@ -1,3 +1,14 @@
--r requirements/app.txt
--r requirements/tests.txt
--r requirements/docs.txt
+# ============ App Requirements ============
+-r requirements/develop.txt
+-r requirements/test.txt
+-r requirements/builder.txt
+
+# ============== Documentation =============
+mkdocs
+mkdocs-material
+mkdocs-markdownextradata-plugin
+mkdocs-redirects
+
+# ================ Scripting ===============
+black
+

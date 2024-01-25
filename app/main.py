@@ -1,45 +1,60 @@
 """
-Main file where all the FastAPI requests are build:
-|
-|   NAME -> main.py
-|
-|   DESCRIPTION -> TODO
-|       
-|    
+TODO
+
+    NAME -> main.py
+ 
+    DESCRIPTION -> TODO    
 """
-from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, HTTPException
 
-from .routers import files, networks
-from .core.schemas import network_schemas
-from app import __version__
+from app.routers import files, networks, logs
+from app.core.models import network_models, file_models
+from app.databases.postgresql import engine
+from app.databases.miniodb import minio_client, bucket_name
+from app.middleware import ExceptionHandlerMiddleware, http_exception__handler
+from app.logger import logger
+from app.config import metadata
 
+
+# Write the app documentation description
+description = """
+## Files
+
+Files are stored in a **minio** bucket. It works as a local development environment database with compatibility on the cloud with **S3 AWS**.
+
+## Networks
+
+Networks are stored in a **postgres** database. Connections with the database are stablished using **SQLAlchemy**.
+"""
 
 # Instanciate FastAPI app
 app = FastAPI(
-    title = "EpiGraphX",
-    summary = "☣️ App to simulate Epidemics on Networks.",
-    version = __version__,
+    title=metadata.project_name,
+    summary=metadata.project_description,
+    description=description,
+    version=metadata.version,
     contact={
-        "name": "Arnau Perez",
-        "url": "https://www.linkedin.com/in/arnau-perez-perez/",
-        "email": "01arnauperez@gmail.com",
+        "name": metadata.author,
+        "email": metadata.author_email,
+        "url": metadata.contact_url,
     },
-    license_info={
-        "name": "MIT",
-        "url": "https://github.com/arnaupy/EpiGraphX/blob/main/LICENSE",
-    },
+    license_info={"name": metadata.license},
+    on_startup=logger.info("Starting API..."),
 )
 
-# Add routers
+# Add middleware
+app.add_middleware(ExceptionHandlerMiddleware)
+
+# Add custom http exeption handler
+app.add_exception_handler(HTTPException, http_exception__handler)
+
+# ===================================== Add routers ====================================
 app.include_router(files.router)
 app.include_router(networks.router)
+app.include_router(logs.router)
 
+# ==========================| Build postgres databases tables |==========================
+network_models.Base.metadata.create_all(bind=engine)
 
-@app.exception_handler(network_schemas.NetworkOriginError)
-async def network_origin_error__handler(request: Request, exc: network_schemas.NetworkOriginError):
-    return JSONResponse(
-        status_code = 400,
-        content = {"message": str(exc)}
-    )
-
+# ================================| Build minio bucket |=================================
+file_models.FileBase.create_all(minio_client, bucket_name)

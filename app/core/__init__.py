@@ -6,11 +6,13 @@ Process databases queries and any other iternal functionality
     DESCRIPTION -> TODO
         
     MODULES:
-    |   - f2p2 -> python-readable fortran modules
     |   - features
     |   - models
-    |   - processors
     |   - schemas
+    +
+    
+    FILES:
+    |   - exceptions
     |   - utils
     +
 """
