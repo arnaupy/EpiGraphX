@@ -1,11 +1,14 @@
-# ------------| Documentation |------------
+# ============ App Requirements ============
+-r requirements/develop.txt
+-r requirements/test.txt
+-r requirements/builder.txt
+
+# ============== Documentation =============
 mkdocs
 mkdocs-material
 mkdocs-markdownextradata-plugin
 mkdocs-redirects
 
-# ---------------| Develop |---------------
--r requirements/develop.txt
-
+# ================ Scripting ===============
 black
 

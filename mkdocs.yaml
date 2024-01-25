@@ -23,7 +23,7 @@ theme:
     #     name: Switch to dark mode
 
     # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
+    # - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       accent: teal
@@ -39,7 +39,7 @@ nav:
   - Developer Guide:
       - Quick Start: dev-guide/QuickStart/QuickStart.md
       - Interact with the Backend: dev-guide/InteractBackend/InteractBackend.md
-      - Fortran Modules: dev-guide/FortranModules/FortranModules.md
+      - C++ Bindings: dev-guide/C++Bindings/C++Bindings.md
       - Networks Storage: dev-guide/Databases/NetworkStorage.md
       - Makefile: dev-guide/Makefile.md
       - Testing: dev-guide/Testing.md

@@ -1,3 +1,7 @@
+# --------------------------------------------------------------------------------
+# |      Make file to manage app related comands, documentation and testing      |
+# --------------------------------------------------------------------------------
+
 # Docker compose file namee
 DEVELOP_DOCKER_COMPOSE_FILE = develop.yml
 TEST_DOCKER_COMPOSE_FILE = test.yml
@@ -14,7 +18,6 @@ endif
 
 all: create 
 
-# Make file to manage app related comands, documentation and testing
 help:
 	@echo "create  -> run the docker compose comand to create the project containers, volumes and networks"
 	@echo "devrun  -> start the existing server with terminal messages"
@@ -38,12 +41,12 @@ stop:
 down: 
 	@docker compose -f $(DEVELOP_DOCKER_COMPOSE_FILE) down 
 
-test: create-tests run-tests
+test: _create-tests _run-tests
 
-create-tests:
+_create-tests:
 	@docker compose -f $(TEST_DOCKER_COMPOSE_FILE) create --build 
 
-run-tests:
+_run-tests:
 	@docker compose -f $(TEST_DOCKER_COMPOSE_FILE) up --exit-code-from app-test || true
 	@docker-compose -f $(TEST_DOCKER_COMPOSE_FILE) down -v --remove-orphans
 

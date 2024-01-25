@@ -34,6 +34,6 @@ RUN pip install --no-cache-dir -r ./requirements/${BUILDING_ENVIRONMENT}.txt
 COPY --from=builder ./cpp/cpp ./cpp
 
 COPY ./epigraphx.json .
-COPY ./epigraphx ./epigraphx
+COPY ./app ./app
 
 

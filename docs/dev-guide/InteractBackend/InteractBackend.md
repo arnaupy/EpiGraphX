@@ -1,5 +1,5 @@
 # How to interact with the backend?
-This project is using `Docker` containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the [Makefile](https://github.com/arnaupy/EpiGraphX/blob/main/Makefile). That file is repossible to run commands using `make` followed by the comand specified in that file.
+This project is using `Docker` containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the [Makefile](../Makefile.md). That file is repossible to run commands using `make` followed by the comand specified in that file.
 
 To see information about make comand, run:
 ```
@@ -7,7 +7,7 @@ make help
 ```
 
 ## Create containers
-The following comand creates the corresponding images and create container specified in `Docker files`.
+The following comand creates the corresponding images and create containers specified in [develop.yml](https://github.com/arnaupy/EpiGraphX/blob/main/develop.yml).
 ```
 make create
 ``` 
@@ -28,12 +28,14 @@ These comands will run the server at port `8080 `which you can access with `Fast
 ![App](FastAPI-Docs.png)
 
 ## Stop & Remove containers
+* If you want to remove containers:
+```
+make down
+```
+
 * You can use the following comand to stop the containers running process.
 ```
 make stop
 ```
-* If you want to remove containers, images and volumes:
-```
-make down
-```
+
 

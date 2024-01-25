@@ -9,35 +9,36 @@ services:
       dockerfile: docker/test/python/Dockerfile
     # Path to envionment variables to store int the container
     env_file:
+      - .envs/.env
       - .envs/.test/postgres.env
       - .envs/.test/minio.env
     ports:
       - 9080:80
     depends_on:
-      - postgres
-      - minio
+      - postgres-test
+      - minio-test
     # Command to run the api
     command: pytest 
 
   # Defining the postgres database image for testing
-  postgres:
+  postgres-test:
     container_name: channel-postgres-test
     build:
       context: .
-      dockerfile: docker/develop/postgres/Dockerfile
+      dockerfile: docker/test/postgres/Dockerfile
     ports:
       - 6432:5432
     restart: always
     privileged: true
 
-  minio:
+  minio-test:
     container_name: channel-minio-test
-    image: minio/minio
+    build:
+      context: .
+      dockerfile: docker/test/minio/Dockerfile
     restart: always
+    privileged: true
     ports:
       - 9001:9000
-    environment:
-      - MINIO_ROOT_USER=myrootuser
-      - MINIO_ROOT_PASSWORD=myrootpassword
 
     command: server /data

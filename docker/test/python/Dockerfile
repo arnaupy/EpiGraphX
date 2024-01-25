@@ -17,7 +17,7 @@ RUN pip --no-cache-dir install -r builder.txt
 COPY ./epigraphx.json . 
 COPY ./README.md . 
 COPY ./cpp ./cpp 
-COPY ./epigraphx ./epigraphx
+COPY ./app ./app
 COPY ./setup.py . 
 
 RUN python3 setup.py bdist_wheel
