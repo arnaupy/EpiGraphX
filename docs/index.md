@@ -4,6 +4,9 @@
     <a href="https://python.org">
         <img src="https://img.shields.io/badge/Python-yellow?style=for-the-badge&logo=python&logoColor=white&labelColor=101010" alt="Python">
     </a>
+    <a href="https://www.w3schools.com/cpp/default.asp">
+        <img src="https://img.shields.io/badge/C++-0e4b86?style=for-the-badge&logo=c%2B%2B&logoColor=white&labelColor=101010" alt="C++">
+    </a>
     <a href="https://fastapi.tiangolo.com">
         <img src="https://img.shields.io/badge/FastAPI-289475?style=for-the-badge&logo=FastAPI&logoColor=white&labelColor=101010" alt="FastAPI">
     </a>
@@ -14,13 +17,13 @@
         <img src="https://img.shields.io/badge/SQLAlchemy-darkred?style=for-the-badge&logo=sqlalchemy&logoColor=white&labelColor=101010" alt="SQLAlchemy">
     </a>
     <a href="https://docs.pydantic.dev/latest/">
-        <img src="https://img.shields.io/badge/pydantic-pink?style=for-the-badge&logo=pydantic&logoColor=white&labelColor=101010" alt="Pydantic">
-    </a>
-    <a href="https://www.w3schools.com/cpp/default.asp">
-        <img src="https://img.shields.io/badge/C++-0e4b86?style=for-the-badge&logo=c%2B%2B&logoColor=white&labelColor=101010" alt="C++">
+        <img src="https://img.shields.io/badge/pydantic-e92063?style=for-the-badge&logo=pydantic&logoColor=white&labelColor=101010" alt="Pydantic">
     </a>
     <a href="https://min.io/">
         <img src="https://img.shields.io/badge/Minio-c12a46?style=for-the-badge&logo=minio&logoColor=white&labelColor=101010" alt="Minio">
+    </a>
+    <a href="https://www.postgresql.org/">
+        <img src="https://img.shields.io/badge/Postgresql-31648d?style=for-the-badge&logo=postgresql&logoColor=white&labelColor=101010" alt="PostgreSQL">
     </a>
 </p>
 
@@ -32,8 +35,6 @@
 </center>
 
 ---
-Documentation -> <https://arnaupy.github.io/EpiGraphX>{:target="_blank"}
-
 Source code -> <https://github.com/arnaupy/EpiGraphX>{:target="_blank"}
 
 ---

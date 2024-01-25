@@ -3,11 +3,13 @@
 <div align="center">
 
 [![Python](https://img.shields.io/badge/Python-yellow?style=for-the-badge&logo=python&logoColor=white&labelColor=101010)](https://python.org)
+[![C++](https://img.shields.io/badge/C++-0e4b86?style=for-the-badge&logo=c%2B%2B&logoColor=white&labelColor=101010)](https://www.w3schools.com/cpp/default.asp)
 [![FastAPI](https://img.shields.io/badge/FastAPI-289475?style=for-the-badge&logo=FastAPI&logoColor=white&labelColor=101010)](https://fastapi.tiangolo.com)
 [![Docker](https://img.shields.io/badge/Docker-blue?style=for-the-badge&logo=docker&logoColor=white&labelColor=101010)](https://www.docker.com/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-darkred?style=for-the-badge&logo=sqlalchemy&logoColor=white&labelColor=101010)](https://www.sqlalchemy.org/)
-[![Pydantic](https://img.shields.io/badge/pydantic-pink?style=for-the-badge&logo=pydantic&logoColor=white&labelColor=101010)](https://docs.pydantic.dev/latest/)
-[![C++](https://img.shields.io/badge/C++-0e4b86?style=for-the-badge&logo=c%2B%2B&logoColor=white&labelColor=101010)](https://www.w3schools.com/cpp/default.asp)
+[![Pydantic](https://img.shields.io/badge/pydantic-e92063?style=for-the-badge&logo=pydantic&logoColor=white&labelColor=101010)](https://docs.pydantic.dev/latest/)
+[![Minio](https://img.shields.io/badge/Minio-c12a46?style=for-the-badge&logo=minio&logoColor=white&labelColor=101010)](https://min.io/)
+[![PostgreSQL](https://img.shields.io/badge/Postgresql-31648d?style=for-the-badge&logo=postgresql&logoColor=white&labelColor=101010)](https://www.postgresql.org/)
 
 <img width="40%" src="docs/assets/white_logo.png">
 </div>

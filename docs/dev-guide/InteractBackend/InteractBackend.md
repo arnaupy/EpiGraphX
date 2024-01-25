@@ -25,7 +25,9 @@ After building containers, you can restart the server:
 
 These comands will run the server at port `8080 `which you can access with `FastAPI docs` automatically at [http://localhost:8080/docs](http://localhost:8080/docs).
   
-![App](FastAPI-Docs.png)
+![App](FastAPI-Docs-1.png)
+![App](FastAPI-Docs-2.png)
+![App](FastAPI-Docs-3.png)
 
 ## Stop & Remove containers
 * If you want to remove containers:
