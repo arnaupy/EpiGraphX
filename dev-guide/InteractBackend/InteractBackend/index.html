@@ -14,7 +14,7 @@
         <link rel="prev" href="../../QuickStart/QuickStart/">
       
       
-        <link rel="next" href="../../FortranModules/FortranModules/">
+        <link rel="next" href="../../C%2B%2BBindings/C%2B%2BBindings/">
       
       
       <link rel="icon" href="../../../assets/black_logo.png">
@@ -60,16 +60,12 @@
   
     
     
-      
-    
     
     
     
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -119,20 +115,6 @@
       </div>
     </div>
     
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-      </label>
-    
-  
-</form>
       
     
     
@@ -481,11 +463,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../FortranModules/FortranModules/" class="md-nav__link">
+      <a href="../../C%2B%2BBindings/C%2B%2BBindings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Fortran Modules
+    C++ Bindings
   </span>
   
 
@@ -687,12 +669,12 @@
 
 
 <h1 id="how-to-interact-with-the-backend">How to interact with the backend?</h1>
-<p>This project is using <code>Docker</code> containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the <a href="https://github.com/arnaupy/EpiGraphX/blob/main/Makefile">Makefile</a>. That file is repossible to run commands using <code>make</code> followed by the comand specified in that file.</p>
+<p>This project is using <code>Docker</code> containers to isolate all app functionalities. To make it easier to interact with images and containers, you can see the <a href="../../Makefile/">Makefile</a>. That file is repossible to run commands using <code>make</code> followed by the comand specified in that file.</p>
 <p>To see information about make comand, run:<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>make help
 </span></code></pre></div></p>
 <h2 id="create-containers">Create containers</h2>
-<p>The following comand creates the corresponding images and create container specified in <code>Docker files</code>.<br />
+<p>The following comand creates the corresponding images and create containers specified in <a href="https://github.com/arnaupy/EpiGraphX/blob/main/develop.yml">develop.yml</a>.<br />
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>make create
 </span></code></pre></div></p>
 <h2 id="run-the-server">Run the server</h2>
@@ -710,15 +692,21 @@
 </div>
 </div>
 <p>These comands will run the server at port <code>8080</code>which you can access with <code>FastAPI docs</code> automatically at <a href="http://localhost:8080/docs">http://localhost:8080/docs</a>.</p>
-<p><img alt="App" src="../FastAPI-Docs.png" /></p>
+<p><img alt="App" src="../FastAPI-Docs-1.png" /><br />
+<img alt="App" src="../FastAPI-Docs-2.png" /><br />
+<img alt="App" src="../FastAPI-Docs-3.png" /></p>
 <h2 id="stop-remove-containers">Stop &amp; Remove containers</h2>
 <ul>
-<li>You can use the following comand to stop the containers running process.<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make stop
-</span></code></pre></div></li>
-<li>If you want to remove containers, images and volumes:<br />
-<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make down
-</span></code></pre></div></li>
+<li>
+<p>If you want to remove containers:<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>make down
+</span></code></pre></div></p>
+</li>
+<li>
+<p>You can use the following comand to stop the containers running process.<br />
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>make stop
+</span></code></pre></div></p>
+</li>
 </ul>
 
 

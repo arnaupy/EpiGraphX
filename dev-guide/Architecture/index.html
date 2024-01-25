@@ -60,16 +60,12 @@
   
     
     
-      
-    
     
     
     
     <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -119,20 +115,6 @@
       </div>
     </div>
     
-      
-        <form class="md-header__option" data-md-component="palette">
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
-      </label>
-    
-  
-</form>
       
     
     
@@ -420,11 +402,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../FortranModules/FortranModules/" class="md-nav__link">
+      <a href="../C%2B%2BBindings/C%2B%2BBindings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Fortran Modules
+    C++ Bindings
   </span>
   
 
@@ -702,25 +684,26 @@
 
 <h1 id="how-is-code-structured">How is code structured?</h1>
 <p>The app is structured with a specific number of layers to ensure that the code is <code>expandable</code> and <code>easily fixable</code> if necessary. For this reason, the project is divided into four different blocks that are interconnected.</p>
-<p><img alt="Arquitecture diagram" src="../../assets/CodeArchitecture.png" /></p>
+<p><img alt="Arquitecture diagram" src="../../assets/Arquitecture.png" /></p>
 <h2 id="core">Core</h2>
 <p>This is the main piece of the code that manages the interaction between the database and backend. It consists of four interconnected parts:</p>
 <ul>
 <li><code>Features</code> : responsible for app functionalities. </li>
 <li><code>Models</code> : represent storage objects, which can inherit from file systems or any database in <code>DATABASES</code>. </li>
 <li><code>Schemas</code> : represent <code>Models</code> sent through the API.</li>
-<li><code>Processors</code> : interact with objects created in models if needed.</li>
 </ul>
 <h2 id="routers">Routers</h2>
 <p>This part manages the API paths. </p>
 <ul>
-<li><code>Networks</code> : contains all the crud functionalities and network features.</li>
+<li><code>Networks</code> : contains all the functionalities for network objects.</li>
 <li><code>Files</code> : contains any system file that can be accessed by the user.</li>
+<li><code>Logs</code> : access the logs of the system by the api admin or by the developer.</li>
 </ul>
 <h2 id="databases">Databases</h2>
 <p>The app needs some databases to store the network data or models performance for example. Then, APIs to interact with these databeses are managed in this part of the app.</p>
 <ul>
 <li><code>PostgreSQL</code> : SQL database for storing relational data and data that needs to be modified recurrently or accessed easily.</li>
+<li><code>Minio</code> : Store data in file format. Its high-performance and S3 compatible object store makes it the apropiate choice for the app.</li>
 </ul>
 <h2 id="view">View</h2>
 <p>👷 Work in progress...</p>
